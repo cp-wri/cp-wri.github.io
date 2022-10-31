@@ -14,9 +14,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test --if-present
+    - name: Setup yarn
+      uses: mskelton/setup-yarn@v1
+    - run: yarn
+    - run: yarn build
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
