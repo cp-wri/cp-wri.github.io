@@ -1,0 +1,34 @@
+{
+  "name": "cp-wri.github.io",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "gridsome build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "develop": "gridsome develop",
+    "explore": "gridsome explore"
+  },
+  "dependencies": {
+    "@gridsome/plugin-sitemap": "^0.4.0",
+    "@gridsome/source-filesystem": "^0.6.2",
+    "@gridsome/transformer-remark": "^0.6.4",
+    "@gridsome/vue-remark": "^0.2.6",
+    "@vssue/api-github-v4": "^1.4.7",
+    "fuse.js": "^6.4.6",
+    "gh-pages": "^3.2.3",
+    "gridsome": "^0.7.0",
+    "gridsome-plugin-gtag": "^0.1.10",
+    "gridsome-plugin-recommender": "^1.1.5",
+    "gridsome-plugin-remark-shiki": "https://github.com/EldoranDev/gridsome-plugin-remark-shiki",
+    "gridsome-plugin-robots-txt": "^1.0.2",
+    "gridsome-plugin-rss": "^1.2.0",
+    "node-html-to-image": "^3.2.4",
+    "remark-attr": "^0.11.1",
+    "tinycolor2": "^1.4.2",
+    "vssue": "^1.4.8"
+  },
+  "devDependencies": {
+    "gridsome-plugin-windicss": "^1.0.3"
+  }
+}
