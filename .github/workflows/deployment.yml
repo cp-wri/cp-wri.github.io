@@ -7,6 +7,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GRIDSOME_BASE_URL: ${{ secrets.GRIDSOME_BASE_URL }}
+      GRIDSOME_VSSUE_OWNER: ${{ secrets.GRIDSOME_VSSUE_OWNER }}
+      GRIDSOME_VSSUE_REPO: ${{ secrets.GRIDSOME_VSSUE_REPO }}
+      GRIDSOME_VSSUE_CLIENT_ID: ${{ secrets.GRIDSOME_VSSUE_CLIENT_ID }}
+      GRIDSOME_VSSUE_CLIENT_SECRET: ${{ secrets.GRIDSOME_VSSUE_CLIENT_SECRET }}
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
