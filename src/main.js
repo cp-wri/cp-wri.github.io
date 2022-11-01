@@ -3,9 +3,10 @@
 
 import DefaultLayout from '~/layouts/Default.vue'
 import GlobalMixin from '~/mixins/GlobalMixin'
-import Vssue from 'vssue'
+// import Vssue from 'vssue'
 import Fuse from 'fuse.js'
-import GithubV4 from '@vssue/api-github-v4'
+// import GithubV4 from '@vssue/api-github-v4'
+import VueDisqus from 'vue-disqus'
 
 export default function (Vue, { router, head, isClient }) {
   // Set default layout as a global component
@@ -20,15 +21,17 @@ export default function (Vue, { router, head, isClient }) {
     })
   }
 
-  Vue.use(Vssue, {
-    api: GithubV4,
-    owner: process.env.GRIDSOME_VSSUE_OWNER,
-    repo: process.env.GRIDSOME_VSSUE_REPO,
-    clientId: process.env.GRIDSOME_VSSUE_CLIENT_ID,
-    clientSecret: process.env.GRIDSOME_VSSUE_CLIENT_SECRET,
-    perPage: process.env.VSSUE_GRIDSOME_PERPAGE || 15,
-    autoCreateIssue: process.env.GRIDSOME_VSSUE_OWNER || false,
-  })
+  Vue.use(VueDisqus)
+
+  // Vue.use(Vssue, {
+  //   api: GithubV4,
+  //   owner: 'cp-wri' || process.env.GRIDSOME_VSSUE_OWNER,
+  //   repo: 'cp-wri.github.io' || process.env.GRIDSOME_VSSUE_REPO,
+  //   clientId: 'be2f47a31952e4804053' || process.env.GRIDSOME_VSSUE_CLIENT_ID,
+  //   clientSecret: '97f31e271ad491760b3f3e08ee38c61c4c8a099f' || process.env.GRIDSOME_VSSUE_CLIENT_SECRET,
+  //   perPage: process.env.VSSUE_GRIDSOME_PERPAGE || 15,
+  //   autoCreateIssue: process.env.GRIDSOME_VSSUE_OWNER || false,
+  // })
 
   // Add vue filter to capitalise the first letter of each word
   Vue.filter('capitalise', function (value) {

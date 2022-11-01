@@ -1,5 +1,6 @@
 <template>
-  <Vssue :title="title" />
+  <!-- <Vssue :title="title" /> -->
+  <Disqus :shortname="shortName" :identifier="title" />
 </template>
 
 <script>
@@ -10,6 +11,11 @@ export default {
       required: true,
     },
   },
+  computed: {
+    shortName() {
+      return process.env.GRIDSOME_DISQUS_SHORTNAME
+    }
+  }
 }
 </script>
 

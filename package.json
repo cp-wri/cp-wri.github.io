@@ -26,7 +26,8 @@
     "node-html-to-image": "^3.2.4",
     "remark-attr": "^0.11.1",
     "tinycolor2": "^1.4.2",
-    "vssue": "^1.4.8"
+    "vssue": "^1.4.8",
+    "vue-disqus": "^4.0.1"
   },
   "devDependencies": {
     "gridsome-plugin-windicss": "^1.0.3"
