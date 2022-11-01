@@ -24,6 +24,8 @@ jobs:
       with:
         node-version: '16'
         cache: 'yarn'
+    - name: Check if secret is readable [ONLY TEST]
+      run: echo ${{ secrets.GRIDSOME_DISQUS_SHORTNAME }}
     - run: yarn
     - run: yarn build
     - name: Upload artifact
