@@ -19,14 +19,14 @@ const coverOptions = {
     }
   ],
   // Set Colours
-  colours:  [
-    "#559BFF",
-    "#FFD948",
-    "#CD1FFF",
-    "#41FFA7",
-    "#FF6336",
-    "#FF4576"
-  ]
+  // colours:  [
+  //   "#559BFF",
+  //   "#FFD948",
+  //   "#CD1FFF",
+  //   "#41FFA7",
+  //   "#FF6336",
+  //   "#FF4576"
+  // ]
 }
 
 module.exports = function (api) {

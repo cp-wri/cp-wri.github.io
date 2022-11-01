@@ -18,7 +18,7 @@
           flex flex-wrap
           justify-between
           items-center
-          py-4
+          py-6
         "
       >
         <div class="site-logo">
@@ -132,7 +132,6 @@ query {
 </static-query>
 
 <script>
-
 export default {
   components: {
     SiteLogo: () => import('~/components/SiteLogo'),

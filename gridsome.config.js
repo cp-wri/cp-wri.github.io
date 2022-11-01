@@ -5,11 +5,11 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: process.env.SITE_NAME || 'Competitive Programming Workshop & Riset Informatika',
+  siteName: process.env.SITE_NAME || 'Gridsome Geek Blog',
   siteDescription:
     process.env.SITE_DESCRIPTION ||
-    'Competitive Programming (CP) merupakan forum di dalam Workshop & Riset Informatika bertujuan mewadahi mahasiswa yang memiliki bakat / minat di bidang competitive programming. Nantinya, kita akan belajar dan breakdown bersama - samaterkait persiapan Competitive Programming.',
-  siteUrl: process.env.GRIDSOME_BASE_URL || 'https://cp-wri.github.io/',
+    'Gridsome Geek Blog covers Technologies, Apps, Games, Tips and Tricks, How to, Linux, Windows, Blogging, Programming etc.',
+  siteUrl: process.env.GRIDSOME_BASE_URL || 'https://xqsit94.github.com',
   icon: {
     favicon: {
       src: process.env.SITE_FAVICON_PATH || './static/images/favicon.png',
@@ -62,20 +62,20 @@ module.exports = {
         feedOptions: {
           title:
             process.env.SITE_TITLE ||
-            'CP-WRI | Competitive Programming Workshop & Riset Informatika',
+            'Geek Blog | Technology Guide, Tips, HowTo, Coding etc.',
           feed_url: process.env.GRIDSOME_BASE_URL
             ? `${process.env.GRIDSOME_BASE_URL}/rss.xml`
-            : 'https://cp-wri.github.io/rss.xml',
+            : 'https://xqsit94.github.com/rss.xml',
           site_url:
-            process.env.GRIDSOME_BASE_URL || 'https://cp-wri.github.io/',
+            process.env.GRIDSOME_BASE_URL || 'https://xqsit94.github.com/',
         },
         feedItemOptions: (node) => ({
           title: node.title,
           description: node.summary,
           url: process.env.GRIDSOME_BASE_URL
             ? process.env.GRIDSOME_BASE_URL + node.path
-            : 'https://cp-wri.github.io/' + node.path,
-          author: process.env.SITE_AUTHOR || 'Workshop & Riset Informatika (@cp-wri)',
+            : 'https://xqsit94.github.com' + node.path,
+          author: process.env.SITE_AUTHOR || 'Manikandan (xqsit94)',
           date: node.date,
         }),
         output: {

@@ -7,8 +7,6 @@ import GlobalMixin from '~/mixins/GlobalMixin'
 import Fuse from 'fuse.js'
 // import GithubV4 from '@vssue/api-github-v4'
 import VueDisqus from 'vue-disqus'
-import 'windicss';
-
 
 export default function (Vue, { router, head, isClient }) {
   // Set default layout as a global component
