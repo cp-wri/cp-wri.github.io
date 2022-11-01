@@ -7,16 +7,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: cp-wri.github.io
     env:
       SITE_NAME: "Competitive Programming WRI"
       SITE_TITLE: "CP WRI"
       SITE_DESCRIPTION: "Competitive Programming (CP) merupakan forum di dalam Workshop & Riset Informatika bertujuan mewadahi mahasiswa yang memiliki bakat / minat di bidang competitive programming."
       GRIDSOME_DISQUS_SHORTNAME: "https-cp-wri-github-io"
       GRIDSOME_BASE_URL: ${{ secrets.GRIDSOME_BASE_URL }}
-      GRIDSOME_VSSUE_OWNER: ${{ secrets.GRIDSOME_VSSUE_OWNER }}
-      GRIDSOME_VSSUE_REPO: ${{ secrets.GRIDSOME_VSSUE_REPO }}
-      GRIDSOME_VSSUE_CLIENT_ID: ${{ secrets.GRIDSOME_VSSUE_CLIENT_ID }}
-      GRIDSOME_VSSUE_CLIENT_SECRET: ${{ secrets.GRIDSOME_VSSUE_CLIENT_SECRET }}
     steps:
     - uses: actions/checkout@v3
     - name: Setup Node.js
@@ -24,8 +21,6 @@ jobs:
       with:
         node-version: '16'
         cache: 'yarn'
-    - name: Check if secret is readable [ONLY TEST]
-      run: echo ${{ secrets.GRIDSOME_DISQUS_SHORTNAME }}
     - run: yarn
     - run: yarn build
     - name: Upload artifact
