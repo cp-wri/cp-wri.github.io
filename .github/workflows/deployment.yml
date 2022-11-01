@@ -12,7 +12,7 @@ jobs:
       SITE_NAME: "Competitive Programming WRI"
       SITE_TITLE: "CP WRI"
       SITE_DESCRIPTION: "Competitive Programming (CP) merupakan forum di dalam Workshop & Riset Informatika bertujuan mewadahi mahasiswa yang memiliki bakat / minat di bidang competitive programming."
-      GRIDSOME_DISQUS_SHORTNAME: "https-cp-wri-github-io"
+      GRIDSOME_DISQUS_SHORTNAME: ${{ secrets.GRIDSOME_DISQUS_SHORTNAME }}
       GRIDSOME_BASE_URL: ${{ secrets.GRIDSOME_BASE_URL }}
     steps:
     - uses: actions/checkout@v3
