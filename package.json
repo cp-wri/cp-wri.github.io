@@ -10,11 +10,13 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@gridsome/plugin-sitemap": "^0.4.0",
     "@gridsome/source-filesystem": "^0.6.2",
     "@gridsome/transformer-remark": "^0.6.4",
     "@gridsome/vue-remark": "^0.2.6",
     "@vssue/api-github-v4": "^1.4.7",
+    "fs": "^0.0.1-security",
     "fuse.js": "^6.4.6",
     "gh-pages": "^3.2.3",
     "gridsome": "^0.7.0",
@@ -23,13 +25,15 @@
     "gridsome-plugin-remark-shiki": "https://github.com/EldoranDev/gridsome-plugin-remark-shiki",
     "gridsome-plugin-robots-txt": "^1.0.2",
     "gridsome-plugin-rss": "^1.2.0",
+    "module": "^1.2.5",
     "node-html-to-image": "^3.2.4",
     "remark-attr": "^0.11.1",
     "tinycolor2": "^1.4.2",
+    "v8": "^0.1.0",
     "vssue": "^1.4.8",
     "vue-disqus": "^4.0.1"
   },
   "devDependencies": {
-    "gridsome-plugin-windicss": "^1.0.3"
+    "gridsome-plugin-windicss": "^1.0.7"
   }
 }
