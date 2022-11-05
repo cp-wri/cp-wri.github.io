@@ -26,8 +26,6 @@
 <!-- Front-matter fields can be queried from GraphQL layer -->
 
 <script>
-import VuePdf from 'vue-pdf'
-
 export default {
   name: 'ContestPage',
   props: {
@@ -58,8 +56,6 @@ export default {
   },
   components: {
     AppSidebar: () => import('~/components/parts/AppSidebar'),
-    // Layout: () => import('~/layouts/Contests.vue'),
-    VuePdf,
   },
   watch: {
     selected: function (val) {
