@@ -30,7 +30,7 @@
                         {{ roundidx }}
                         <ul class="ml-1">
                           <li v-for="(problem, problemidx)  in round" :key="problemidx">
-                            <a :href="problem.node.path" :class="problem.node.path == $page.contest.path ? 'text-primary-500' : ''" class="text-gray-700 dark:text-gray-300">
+                            <a :href="problem.node.path" class="text-gray-700 dark:text-gray-300">
                               {{ problem.node.title }}
                             </a>
                           </li>
@@ -46,52 +46,16 @@
       </aside>
 
       <section class="w-full md:w-4/7 flex flex-col px-2 md:px-10">
-        <!-- <slot /> -->
-        <ContestPage :page="$page" :selected="selected"/>
-      </section>
-
-      <aside
-        class="
-          w-full
-          md:w-2/7
-          flex flex-col
-          pl-2
-          pr-2
-          md:pr-0 md:pl-6 md:border-l-1
-          border-gray-300
-          dark:border-gray-700
-        "
-        aria-label="right-sidebar"
-      >
+        <!-- message telling to choose the page from left sidebar -->
         <div class="w-full flex flex-col my-4">
-          <p class="text-xl font-semibold pb-5">Solutions</p>
-      <ul>
-        <li v-for="s in $page.contest.solutions" :key="s" >
-          <button @click="toggleSelected(s)" :class="{'bg-primary-500 text-white': selected === s}">
-            {{  s.split('/').pop()  }}
-          </button>
-        </li>
-      </ul>
+          <p class="text-xl font-semibold pb-5">Pilih Kompetisi</p>
+          <p class="text-gray-700 dark:text-gray-300">Pilih kompetisi yang ingin kamu lihat dari sidebar kiri.</p>
         </div>
-      </aside>
+      </section>
     </div>
   </Layout>
 </template>
 
-<page-query>
-query Contest ($path: String!) {
-  contest: contest (path: $path) {
-    path
-    title
-    contest
-    round
-    problem
-    content
-    pdf
-    solutions
-  }
-}
-</page-query>
 
 <static-query>
 query {
@@ -115,16 +79,16 @@ query {
 </static-query>
 
 <script>
-import ContestPage from "../components/contest/ContestPage.vue";
+
 export default {
   metaInfo() {
     return {
-      title: this.$page.contest.title,
+      title: 'Competitive Programming Contests',
       meta: [
         {
           key: 'description',
           name: 'description',
-          content: this.$page.contest.contest,
+          content: 'Competitive Programming Contests'
         },
         // { name: 'description', content: this.$page.documentation.excerpt },
         // { name: 'twitter:card', content: 'summary_large_image' },
@@ -167,11 +131,6 @@ export default {
     }
   },
   components: {
-    SiteLogo: () => import('~/components/SiteLogo'),
-    SearchInput: () => import('~/components/SearchInput'),
-    ThemeSwitcher: () => import('~/components/ThemeSwitcher'),
-    AppFooter: () => import('~/components/parts/AppFooter'),
-    ContestPage: () => import('~/components/contest/ContestPage'),
     Layout: () => import('~/layouts/Default.vue'),
   },
   mounted() {
@@ -193,7 +152,6 @@ export default {
   },
   computed: {
     contests() {
-      // group this.$static.allContest.edges by contest, year, round
       const contests = {}
       this.$static.allContest.edges.forEach((edge) => {
         const { contest, year, round } = edge.node

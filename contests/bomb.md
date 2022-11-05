@@ -1,6 +1,6 @@
 ---
 contest: INTERCOMP
-yeear: 2022
+year: 2022
 round: Penyisihan
 problem: A
 title: Bomb
