@@ -38,6 +38,21 @@ module.exports = {
         ],
       },
     },
+    // {
+    //   use: '@gridsome/vue-remark',
+    //   options: {
+    //     typeName: 'Problem', // Required
+    //     baseDir: './problems', // Where .md files are located
+    //     template: './src/templates/Problem.vue', // Optional
+    //     pathPrefix: '/problems', // Add route prefix. Optional
+    //     plugins: [
+    //       [
+    //         'gridsome-plugin-remark-shiki',
+    //         { theme: 'css-variables', skipInline: true },
+    //       ],
+    //     ],
+    //   },
+    // },
     {
       use: '@gridsome/source-filesystem',
       options: {
@@ -51,6 +66,37 @@ module.exports = {
           categories: {
             typeName: 'Category',
             create: true,
+          },
+        },
+      },
+    },
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'contests/**/*.md',
+        typeName: 'Contest',
+        refs: {
+          competition: {
+            typeName: 'Competition',
+            create: true,
+            refs: {
+              year: {
+                typeName: 'Year',
+                create: true,
+                refs: {
+                  round: {
+                    typeName: 'Round',
+                    create: true,
+                    refs: {
+                      problem: {
+                        typeName: 'Problem',
+                        create: true,
+                      },
+                    },
+                  },
+                }
+              }
+            }
           },
         },
       },
@@ -121,7 +167,8 @@ module.exports = {
   templates: {
     Tag: '/tag/:id',
     Category: '/category/:id',
-    Post: '/blog/:path'
+    Post: '/blog/:path',
+    Contest: '/contests/:contest/:year/:round/:problem',
   },
   transformers: {
     remark: {

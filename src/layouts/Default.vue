@@ -148,6 +148,11 @@ export default {
       isOpen: false,
       menuItems: [
         {
+          key: 'problem',
+          name: 'Problems',
+          to: '/problems/',
+        },
+        {
           key: 'blog',
           name: 'Blog',
           to: '/blog/',
