@@ -148,9 +148,9 @@ export default {
       isOpen: false,
       menuItems: [
         {
-          key: 'problem',
-          name: 'Problems',
-          to: '/problems/',
+          key: 'contests',
+          name: 'Contests',
+          to: '/contests/',
         },
         {
           key: 'blog',
