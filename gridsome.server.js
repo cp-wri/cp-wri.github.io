@@ -13,9 +13,9 @@ const coverOptions = {
   imgHeight: "576",
   types: [
     {
-      name:     "Posts",
+      name: "Posts",
       typeName: "Post",
-      path:     "blog"
+      path: "blog"
     }
   ],
   // Set Colours
@@ -34,23 +34,19 @@ module.exports = function (api) {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
 
     addMetadata(
-      'siteTitle',
-      process.env.SITE_TITLE || 'Technology Guide, Tips, HowTo, Coding etc'
+      'siteTitle', 'Competitive Programming - Workshop & Riset Informatika'
     )
-    addMetadata('siteAuthor', process.env.SITE_AUTHOR || 'xqsit94')
+    addMetadata('siteAuthor', 'CP-WRI')
     addMetadata(
-      'siteAuthorUrl',
-      process.env.SITE_AUTHOR_URL || 'https://github.com/xqsit94'
+      'siteAuthorUrl', 'https://www.github.com/cp-wri'
     )
     addMetadata(
       'archive_title',
-      process.env.ARCHIVE_TITLE ||
-        'NOTE: THIS ARTICLE IS PART OF OUR ARCHIVE AND IS LIKELY OUT OF DATE.'
+      'NOTE: THIS ARTICLE IS PART OF OUR ARCHIVE AND IS LIKELY OUT OF DATE.'
     )
     addMetadata(
       'archive_text',
-      process.env.ARCHIVE_TEXT ||
-        '(LINKS MAY NOT WORK, DOWNLOADS HAVE NOT BEEN RECENTLY TESTED FOR SAFETY)'
+      '(LINKS MAY NOT WORK, DOWNLOADS HAVE NOT BEEN RECENTLY TESTED FOR SAFETY)'
     )
 
     const category = addCollection('Category')

@@ -1,18 +1,10 @@
-// This is where project configuration and plugin options are located.
-// Learn more: https://gridsome.org/docs/config
-
-// Changes here require a server restart.
-// To restart press CTRL + C in terminal and run `gridsome develop`
-
 module.exports = {
-  siteName: process.env.SITE_NAME || 'Gridsome Geek Blog',
-  siteDescription:
-    process.env.SITE_DESCRIPTION ||
-    'Gridsome Geek Blog covers Technologies, Apps, Games, Tips and Tricks, How to, Linux, Windows, Blogging, Programming etc.',
-  siteUrl: process.env.GRIDSOME_BASE_URL || 'https://xqsit94.github.com',
+  siteName: 'CP-WRI',
+  siteDescription: 'Competitive Programming - Workshop & Riset Informatika atau CP-WRI merupakan sebuah sub komunitas dari WRI yang menaungi para mahasiswa dalam bidang pemrograman kompetitif',
+  siteUrl: 'https://cp-wri.github.io',
   icon: {
     favicon: {
-      src: process.env.SITE_FAVICON_PATH || './static/images/favicon.png',
+      src: './static/images/favicon.png',
       sizes: [16, 32, 96],
     },
   },
@@ -107,21 +99,15 @@ module.exports = {
         contentTypeName: 'Post',
         feedOptions: {
           title:
-            process.env.SITE_TITLE ||
-            'Geek Blog | Technology Guide, Tips, HowTo, Coding etc.',
-          feed_url: process.env.GRIDSOME_BASE_URL
-            ? `${process.env.GRIDSOME_BASE_URL}/rss.xml`
-            : 'https://xqsit94.github.com/rss.xml',
-          site_url:
-            process.env.GRIDSOME_BASE_URL || 'https://xqsit94.github.com/',
+            "CP-WRI's Blog",
+          feed_url: 'https://cp-wri.github.io/rss.xml',
+          site_url: 'https://cp-wri.github.io/blog',
         },
         feedItemOptions: (node) => ({
           title: node.title,
           description: node.summary,
-          url: process.env.GRIDSOME_BASE_URL
-            ? process.env.GRIDSOME_BASE_URL + node.path
-            : 'https://xqsit94.github.com' + node.path,
-          author: process.env.SITE_AUTHOR || 'Manikandan (xqsit94)',
+          url: 'https://cp-wri.github.io/blog/' + node.slug,
+          author: node.author || 'CP-WRI',
           date: node.date,
         }),
         output: {
