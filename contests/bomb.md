@@ -5,6 +5,3 @@ round: Penyisihan
 problem: A
 title: Bomb
 ---
-
-## just find the bom
-sdflkjsldf

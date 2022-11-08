@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div class="container px-5 py-8 mx-auto flex flex-wrap">
+    <div id="content-container" class="container px-5 py-8 mx-auto flex flex-wrap">
       <aside class="
           w-full
           md:w-1/7
@@ -17,9 +17,12 @@
 
             <ul>
               <li v-for="(contest, contestidx)  in contests" :key="contestidx"
-                class="border-b border-solid last:border-none border-gray-300 pb-2 mt-2">
+                class="border-b border-solid last:border-none border-gray-300 pb-2 mt-2"
+                >
                 <div
-                  class="text-base text-gray-900 text-left bg-primary-100 dark:bg-primary-600 dark:text-white px-2 py-1 rounded-md w-full flex flex-row items-center justify-between mb-2">
+                  class="text-base text-gray-900 text-left bg-primary-100 dark:bg-primary-600 dark:text-white px-2 py-1 rounded-md w-full flex flex-row items-center justify-between mb-2 cursor-pointer"
+                  @click="toggleContest(contestidx)"
+                  >
                   <span class="font-semibold lowercase first-letter:capitalize py-1">{{
                       contestidx
                   }}</span>
@@ -30,10 +33,13 @@
                       clip-rule="evenodd" />
                   </svg>
                 </div>
-                <ul class="ml-1 ">
+                <transition name="scroll-up" mode="out-in">
+                <ul class="ml-1" v-if="isContestOpen(contestidx)" key="years">
                   <li v-for="(year, yearidx)  in contest" :key="yearidx">
                     <div
-                      class="text-base text-gray-800 dark:text-white bg-secondary-50 dark:bg-secondary-500 text-left bg-primary-200 px-2 py-1 rounded-md w-full flex flex-row items-center justify-between mb-2">
+                      class="text-base text-gray-800 dark:text-white bg-secondary-50 dark:bg-secondary-500 text-left bg-primary-200 px-2 py-1 rounded-md w-full flex flex-row items-center justify-between mb-2 cursor-pointer"
+                      @click="toggleYear(contestidx, yearidx)"
+                      >
                       <span class="font-semibold lowercase first-letter:capitalize py-1">{{
                           yearidx
                       }}</span>
@@ -44,10 +50,13 @@
                           clip-rule="evenodd" />
                       </svg>
                     </div>
-                    <ul class="ml-1">
+                    <transition name="scroll-up" mode="out-in">
+                    <ul class="ml-1" v-if="isYearOpen(contestidx, yearidx)" key="rounds">
                       <li v-for="(round, roundidx)  in year" :key="roundidx">
                         <div
-                          class="text-base text-gray-800 dark:text-white bg-primary-100 dark:bg-primary-600 text-left bg-primary-200 px-2 py-1 rounded-md w-full flex flex-row items-center justify-between mb-2">
+                          class="text-base text-gray-800 dark:text-white bg-primary-100 dark:bg-primary-600 text-left bg-primary-200 px-2 py-1 rounded-md w-full flex flex-row items-center justify-between mb-2 cursor-pointer"
+                          @click="toggleRound(contestidx, yearidx, roundidx)"
+                          >
                           <span class="font-semibold lowercase first-letter:capitalize py-1">{{
                               roundidx
                           }}</span>
@@ -58,12 +67,16 @@
                               clip-rule="evenodd" />
                           </svg>
                         </div>
-                        <ul class="ml-1">
+                        <transition name="scroll-up" mode="out-in">
+                        <ul class="ml-1" v-if="isRoundOpen(contestidx, yearidx, roundidx)" key="problems">
                           <li v-for="(problem, problemidx)  in round" :key="problemidx">
                             <a :href="problem.node.path" class="text-gray-700 dark:text-gray-300">
                               <div
-                                class="text-base text-gray-800 dark:text-white bg-white dark:bg-primary-600 text-left border px-2 py-0.5 rounded-md w-full flex flex-row items-center justify-between mb-0.5">
-                                <span class="font-semibold lowercase first-letter:capitalize py-1">{{
+                                class="text-base dark:text-white bg-white dark:bg-primary-600 text-left border px-2 py-0.5 rounded-md w-full flex flex-row items-center justify-between mb-0.5"
+                                
+                                >
+                                <span class="font-semibold lowercase first-letter:capitalize py-1">
+                                  {{
                                     problem.node.title
                                 }}</span>
                                 <!-- circle -->
@@ -77,10 +90,13 @@
                             </a>
                           </li>
                         </ul>
+                        </transition>
                       </li>
                     </ul>
+                    </transition>
                   </li>
                 </ul>
+                </transition>
               </li>
             </ul>
           </div>
@@ -110,7 +126,7 @@ query {
   metadata {
     siteName
   }
-  allContest {
+  allContest(sortBy: "contest") {
     edges {
       node {
         path
@@ -187,7 +203,31 @@ export default {
   data() {
     return {
       selected: null,
+      dropdown: {}
     }
+  },
+  created() {
+    this.$static.allContest.edges.forEach((c) => {
+      const { contest, year, round } = c.node
+      if (!this.dropdown[contest]) {
+        this.dropdown[contest] = {
+          isOpen: false,
+          years: {},
+        }
+      }
+      if (!this.dropdown[contest].years[year]) {
+        this.dropdown[contest].years[year] = {
+          isOpen:  false,
+          rounds: {},
+        }
+      }
+      if (!this.dropdown[contest].years[year].rounds[round]) {
+        this.dropdown[contest].years[year].rounds[round] = {
+          isOpen: false,
+        }
+      }
+    })
+    this.dropdown = { ...this.dropdown }
   },
   methods: {
     toggleSelected(s) {
@@ -197,6 +237,40 @@ export default {
         this.selected = s;
       }
     },
+    toggleContest(contest) {
+      const updated = this.dropdown;
+      updated[contest].isOpen = !updated[contest].isOpen;
+      this.dropdown = structuredClone(updated);
+    },
+    toggleYear(contest, year) {
+      const updated = this.dropdown;
+      updated[contest].years[year].isOpen = !updated[contest].years[year].isOpen;
+      this.dropdown = structuredClone(updated);
+    },
+    toggleRound(contest, year, round) {
+      const updated = this.dropdown;
+      updated[contest].years[year].rounds[round].isOpen = !updated[contest].years[year].rounds[round].isOpen;
+      this.dropdown = structuredClone(updated);
+    },
+    isContestOpen(contest) {
+      if (this.dropdown[contest] != null) {
+        return this.dropdown[contest].isOpen;
+      }
+      return false;
+    },
+    isYearOpen(contest, year) {
+      if (this.dropdown[contest] != null && this.dropdown[contest].years[year] != null) {
+        return this.dropdown[contest].years[year].isOpen;
+      }
+      return false;
+    },
+    isRoundOpen(contest, year, round) {
+      if (this.dropdown[contest] != null && this.dropdown[contest].years[year] != null && this.dropdown[contest].years[year].rounds[round] != null) {
+        return this.dropdown[contest].years[year].rounds[round].isOpen;
+      }
+      return false;
+    },
+    
   },
   computed: {
     contests() {
@@ -225,36 +299,21 @@ export default {
 }
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <style src="~/css/main.css" />
+
+<style>
+#content-container {
+  min-height: 100vh;
+}
+.scroll-up-enter-active, .scroll-up-leave-active {
+  transition: transform .3s, opacity .3s
+}
+.scroll-up-enter {
+  transform: translateY(-10%);
+  opacity: 0;
+}
+.scroll-up-leave-to {
+  transform: translateY(10%);
+    opacity: 0;
+}
+</style>
