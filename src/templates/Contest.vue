@@ -146,7 +146,6 @@ query Contest ($path: String!) {
     problem
     content
     pdf
-    solutions
   }
 }
 </page-query>
