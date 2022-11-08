@@ -1,43 +1,85 @@
 <template>
   <Layout>
     <div class="container px-5 py-8 mx-auto flex flex-wrap">
-      <aside
-        class="
+      <aside class="
           w-full
           md:w-1/7
           sm:w-0
           flex flex-col
           pr-5
-          hidden
           sm:block
           border-r-1 border-gray-300
           dark:border-gray-700
-        "
-        aria-label="left-sidebar"
-      >
+        " aria-label="left-sidebar">
         <div class="w-full flex flex-col sticky top-5">
           <div class="w-full flex flex-col my-4">
             <p class="text-xl font-semibold pb-5">Kompetisi</p>
 
             <ul>
-              <li v-for="(contest, contestidx)  in contests" :key="contestidx" class="border-b border-dashed border-ui-border border-gray-500 pb-2 mt-2">
-                {{ contestidx }}
+              <li v-for="(contest, contestidx)  in contests" :key="contestidx"
+                class="border-b border-solid last:border-none border-gray-300 pb-2 mt-2">
+                <div
+                  class="text-base text-gray-900 text-left bg-primary-100 dark:bg-primary-600 dark:text-white px-2 py-1 rounded-md w-full flex flex-row items-center justify-between mb-2">
+                  <span class="font-semibold lowercase first-letter:capitalize py-1">{{
+                      contestidx
+                  }}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-auto" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </div>
                 <ul class="ml-1 ">
                   <li v-for="(year, yearidx)  in contest" :key="yearidx">
-                    {{ yearidx }}
+                    <div
+                      class="text-base text-gray-800 dark:text-white bg-secondary-50 dark:bg-secondary-500 text-left bg-primary-200 px-2 py-1 rounded-md w-full flex flex-row items-center justify-between mb-2">
+                      <span class="font-semibold lowercase first-letter:capitalize py-1">{{
+                          yearidx
+                      }}</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-auto" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          clip-rule="evenodd" />
+                      </svg>
+                    </div>
                     <ul class="ml-1">
                       <li v-for="(round, roundidx)  in year" :key="roundidx">
-                        {{ roundidx }}
+                        <div
+                          class="text-base text-gray-800 dark:text-white bg-primary-100 dark:bg-primary-600 text-left bg-primary-200 px-2 py-1 rounded-md w-full flex flex-row items-center justify-between mb-2">
+                          <span class="font-semibold lowercase first-letter:capitalize py-1">{{
+                              roundidx
+                          }}</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-auto" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              clip-rule="evenodd" />
+                          </svg>
+                        </div>
                         <ul class="ml-1">
                           <li v-for="(problem, problemidx)  in round" :key="problemidx">
                             <a :href="problem.node.path" class="text-gray-700 dark:text-gray-300">
-                              {{ problem.node.title }}
+                              <div
+                                class="text-base text-gray-800 dark:text-white bg-white dark:bg-primary-600 text-left border px-2 py-0.5 rounded-md w-full flex flex-row items-center justify-between mb-0.5">
+                                <span class="font-semibold lowercase first-letter:capitalize py-1">{{
+                                    problem.node.title
+                                }}</span>
+                                <!-- circle -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-auto" viewBox="0 0 20 20"
+                                  fill="currentColor">
+                                  <path fill-rule="evenodd"
+                                    d="M10 12a2 2 0 100-4 2 2 0 000 4zm0 2a4 4 0 100-8 4 4 0 000 8z"
+                                    clip-rule="evenodd" />
+                                </svg>
+                              </div>
                             </a>
                           </li>
                         </ul>
-                      </li>  
-                    </ul>    
-                  </li>  
+                      </li>
+                    </ul>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -45,11 +87,17 @@
         </div>
       </aside>
 
-      <section class="w-full md:w-4/7 flex flex-col px-2 md:px-10">
-        <!-- message telling to choose the page from left sidebar -->
+      <section class="w-full md:w-5/7 flex flex-col px-2 md:px-10">
         <div class="w-full flex flex-col my-4">
-          <p class="text-xl font-semibold pb-5">Pilih Kompetisi</p>
-          <p class="text-gray-700 dark:text-gray-300">Pilih kompetisi yang ingin kamu lihat dari sidebar kiri.</p>
+          <div class="w-auto justify-center flex-col items-center flex">
+            <img src="./../../static/images/contest-img-temp.png" alt="contest-img-temp" class="w-full md:w-1/2" />
+            <div class="w-1/2 flex flex-col justify-center items-center">
+              <h1 class="text-3xl text-left font-semibold text-gray-900 dark:text-white">Kompetisi</h1>
+              <p class="text-gray-700 dark:text-gray-300"> Pilih latihan kompetisi yang ingin kamu kerjakan di sebelah
+                kiri
+                halaman ini. </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
@@ -143,7 +191,7 @@ export default {
   },
   methods: {
     toggleSelected(s) {
-      if(this.selected == s) {
+      if (this.selected == s) {
         this.selected = null;
       } else {
         this.selected = s;
@@ -177,5 +225,36 @@ export default {
 }
 </script>
 
-<style src="~/css/main.css" />
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style src="~/css/main.css" />
