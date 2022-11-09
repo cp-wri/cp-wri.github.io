@@ -14,6 +14,7 @@ jobs:
       SITE_DESCRIPTION: "Competitive Programming (CP) merupakan forum di dalam Workshop & Riset Informatika bertujuan mewadahi mahasiswa yang memiliki bakat / minat di bidang competitive programming."
       GRIDSOME_DISQUS_SHORTNAME: ${{ secrets.GRIDSOME_DISQUS_SHORTNAME }}
       GRIDSOME_BASE_URL: ${{ secrets.GRIDSOME_BASE_URL }}
+      GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
     steps:
     - uses: actions/checkout@v3
     - name: Setup Node.js
