@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+}
+
 .light {
     --bg-background-primary: white;
     --bg-background-secondary: #f7fafc;
@@ -59,7 +63,7 @@
     --text-copy-secondary: #e2e8f0;
     --text-menu: #ebf4ff;
 
-    --border-color-primary:  #6b6b6b;
+    --border-color-primary: #6b6b6b;
 
     --headings: #e2e2e2;
 
@@ -88,11 +92,11 @@
     transition: background-color .25s;
 }
 
-.light > header {
+.light>header {
     background-color: var(--bg-background-menu);
 }
 
-.dark > header {
+.dark>header {
     background-color: var(--bg-background-menu);
 }
 
@@ -160,7 +164,7 @@ nav .active {
 }
 
 .heading {
-    font-family: Oswald,sans-serif;
+    font-family: Oswald, sans-serif;
     font-weight: 600;
     font-size: 2em;
     text-transform: uppercase;

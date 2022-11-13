@@ -36,7 +36,7 @@
               >
                 Kompetisi
               </h1>
-              <p class="text-gray-700 dark:text-gray-300">
+              <p class="text-gray-700 dark:text-gray-300 text-center mt-2">
                 Pilih latihan kompetisi yang ingin kamu kerjakan di sebelah kiri
                 halaman ini.
               </p>

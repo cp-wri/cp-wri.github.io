@@ -11,7 +11,7 @@
             border-b border-solid
             last:border-none
             border-gray-300
-            pb-2
+            dark:border-gray-700
             mt-2
           "
         >
@@ -30,10 +30,18 @@
               mb-2
               cursor-pointer
             "
+            :style="
+              contestsColor[contestidx.toLocaleLowerCase()]
+                ? `background-color: ${bgC(contestidx)}; color: ${fgC(
+                    contestidx
+                  )}; filter: saturate(160%)`
+                : ''
+            "
+
             @click="toggleContest(contestidx)"
           >
             <span
-              class="font-semibold lowercase first-letter:capitalize py-1"
+              class="font-semibold first-letter:capitalize py-1"
               >{{ contestidx }}</span
             >
             <svg
@@ -69,6 +77,13 @@
                     justify-between
                     mb-2
                     cursor-pointer
+                  "
+                  :style="
+                    contestsColor[contestidx.toLocaleLowerCase()]
+                      ? `background-color: ${bgC(contestidx)}; color: ${fgC(
+                          contestidx
+                        )}; filter: saturate(100%)`
+                      : ''
                   "
                   @click="toggleYear(contestidx, yearidx)"
                 >
@@ -114,6 +129,15 @@
                           mb-2
                           cursor-pointer
                         "
+                        :style="
+                          contestsColor[contestidx.toLocaleLowerCase()]
+                            ? `background-color: ${bgC(
+                                contestidx
+                              )}; color: ${fgC(
+                                contestidx
+                              )}; filter: saturate(50%)`
+                            : ''
+                        "
                         @click="toggleRound(contestidx, yearidx, roundidx)"
                       >
                         <span
@@ -155,9 +179,8 @@
                               <div
                                 class="
                                   text-base
-                                  dark:text-white
                                   bg-white
-                                  dark:bg-primary-600
+                                  dark:bg-gray-800 dark:text-white
                                   text-left
                                   border
                                   px-2
@@ -167,8 +190,13 @@
                                   flex flex-row
                                   items-center
                                   justify-between
-                                  mb-0.5
+                                  mb-2
                                 "
+                                :class="{
+                                  'bg-secondary-400 text-white dark:bg-secondary-600':
+                                    oppenedContest != null &&
+                                    oppenedContest.path == problem.node.path,
+                                }"
                               >
                                 <span
                                   class="
@@ -213,7 +241,7 @@
 
 <static-query>
 query {
-  allContest(sortBy: "contest") {
+  allContest(sortBy: "contest" order: ASC) {
     edges {
       node {
         path
@@ -241,6 +269,20 @@ export default {
   data() {
     return {
       dropdown: {},
+      contestsColor: {
+        gemastik: {
+          bg: '#f7e1e1',
+          fg: '#f72525',
+        },
+        compfest: {
+          bg: '#fff6e3',
+          fg: '#fcad00',
+        },
+        findit: {
+          bg: '#c1c8e3',
+          fg: '#2f3652',
+        },
+      },
     }
   },
   created() {
@@ -317,6 +359,18 @@ export default {
       }
       return false
     },
+    bgC(contest) {
+      if (this.contestsColor[contest.toLocaleLowerCase()] != null) {
+        return this.contestsColor[contest.toLocaleLowerCase()].bg
+      }
+      return '#fff'
+    },
+    fgC(contest) {
+      if (this.contestsColor[contest.toLocaleLowerCase()] != null) {
+        return this.contestsColor[contest.toLocaleLowerCase()].fg
+      }
+      return '#000'
+    },
   },
   computed: {
     contests() {
@@ -348,12 +402,12 @@ export default {
 }
 
 .scroll-up-enter {
-  transform: translateY(-10%);
+  transform: translateY(-10px);
   opacity: 0;
 }
 
 .scroll-up-leave-to {
-  transform: translateY(10%);
+  transform: translateY(10px);
   opacity: 0;
 }
 </style>

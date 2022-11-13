@@ -18,7 +18,6 @@
       </aside>
 
       <section class="w-full md:w-4/7 flex flex-col px-2 md:px-10">
-        <!-- <slot /> -->
         <ContestPage :page="$page" :showSolutions="showSolutions" />
       </section>
 
@@ -39,11 +38,10 @@
           <p class="text-xl font-semibold pb-5">Solutions</p>
           <button
             @click="toggleShowSolutions()"
-            :class="{ 'bg-primary-500 text-white': showSolutions }"
             class="
               text-base text-gray-900 text-left
+              dark:text-white
               border
-              dark:bg-primary-600 dark:text-white
               px-2
               py-1
               rounded-md
@@ -54,6 +52,7 @@
               mb-2
               cursor-pointer
             "
+            :class="{ 'bg-primary-500 text-white': showSolutions }"
           >
             <span class="font-semibold lowercase first-letter:capitalize py-1">
               Tampilkan Solusi
