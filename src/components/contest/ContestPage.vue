@@ -36,8 +36,6 @@
   </div>
 </template>
 
-<script src="https://gist.github.com/indmind/0c16a9de569c7260e047f67a48d4785c.js"></script>
-
 <!-- Front-matter fields can be queried from GraphQL layer -->
 
 <script>
@@ -53,31 +51,6 @@ export default {
       default: null
     },
   },
-  data() {
-    return {
-      selectedCode: '',
-      selectedLang: '',
-    }
-  },
-  methods: {
-    async loadCode(s)  {
-      const res = await fetch(s);
-      const code = await res.text();
-      const lang = s.split('.').pop();
-
-      this.selectedCode = code;
-      this.selectedLang = lang;
-    }
-  },
-  components: {
-    AppSidebar: () => import('~/components/parts/AppSidebar'),
-  },
-  watch: {
-    selected: function (val) {
-      if(val == null) return;
-      this.loadCode(val)
-    }
-  }
 }
 </script>
 
