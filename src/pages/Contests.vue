@@ -1,8 +1,7 @@
 <template>
   <Layout>
     <div class="content-container container px-5 py-8 mx-auto flex flex-wrap">
-      <aside
-        class="
+      <aside class="
           w-full
           md:w-1/7
           sm:w-0
@@ -11,29 +10,21 @@
           sm:block
           border-r-1 border-gray-300
           dark:border-gray-700
-        "
-        aria-label="left-sidebar"
-      >
+        " aria-label="left-sidebar">
         <Sidebar />
       </aside>
 
       <section class="w-full md:w-5/7 flex flex-col px-2 md:px-10">
         <div class="w-full flex flex-col my-4">
           <div class="w-auto justify-center flex-col items-center flex">
-            <img
-              src="./../../static/images/contest-img-temp.png"
-              alt="contest-img-temp"
-              class="w-full md:w-1/2"
-            />
+            <img src="/images/contest-img-temp.png" alt="contest-img-temp" class="w-full md:w-1/2" />
             <div class="w-1/2 flex flex-col justify-center items-center">
-              <h1
-                class="
+              <h1 class="
                   text-3xl text-left
                   font-semibold
                   text-gray-900
                   dark:text-white
-                "
-              >
+                ">
                 Kompetisi
               </h1>
               <p class="text-gray-700 dark:text-gray-300 text-center mt-2">
@@ -76,11 +67,13 @@ export default {
       ],
     }
   },
-   components: {
+  components: {
     Sidebar: () => import('~/components/contest/Sidebar'),
-   }
+  }
 }
 </script>
+
+
 
 <style src="~/css/main.css" />
 

@@ -1,8 +1,7 @@
 <template>
   <Layout>
     <div class="content-container container px-5 py-8 mx-auto flex flex-wrap">
-      <aside
-        class="
+      <aside class="
           w-full
           md:w-1/7
           sm:w-0
@@ -103,8 +102,7 @@
         <ContestPage :page="$page" :showSolutions="showSolutions" />
       </section>
 
-      <aside
-        class="
+      <aside class="
           w-full
           md:w-2/7
           flex flex-col
@@ -113,14 +111,10 @@
           md:pr-0 md:pl-6 md:border-l-1
           border-gray-300
           dark:border-gray-700
-        "
-        aria-label="right-sidebar"
-      >
+        " aria-label="right-sidebar">
         <div class="w-full flex flex-col my-4">
           <p class="text-xl font-semibold pb-5">Solutions</p>
-          <button
-            @click="toggleShowSolutions()"
-            class="
+          <button @click="toggleShowSolutions()" class="
               text-base text-gray-900 text-left
               dark:text-white
               border
@@ -133,9 +127,7 @@
               justify-between
               mb-2
               cursor-pointer
-            "
-            :class="{ 'bg-primary-500 text-white': showSolutions }"
-          >
+            " :class="{ 'bg-primary-500 text-white': showSolutions }">
             <span class="font-semibold lowercase first-letter:capitalize py-1">
               Tampilkan Solusi
             </span>
@@ -185,43 +177,6 @@ export default {
           name: 'description',
           content: this.$page.contest.contest,
         },
-        // { name: 'description', content: this.$page.documentation.excerpt },
-        // { name: 'twitter:card', content: 'summary_large_image' },
-        // {
-        //   name: 'twitter:description',
-        //   content: this.$page.documentation.excerpt,
-        // },
-        // { name: 'twitter:title', content: this.$page.documentation.title },
-        // {
-        //   name: 'twitter:site',
-        //   content: `@${this.$static.metadata.siteAuthor}`,
-        // },
-        // {
-        //   name: 'twitter:image',
-        //   content: `${this.getBaseUrl}/default-thumb.png`,
-        // },
-        // {
-        //   name: 'twitter:creator',
-        //   content: `@${this.$static.metadata.siteAuthor}`,
-        // },
-        // { property: 'og:type', content: 'document' },
-        // { property: 'og:title', content: this.$page.documentation.title },
-        // {
-        //   property: 'og:description',
-        //   content: this.$page.documentation.excerpt,
-        // },
-        // {
-        //   property: 'og:url',
-        //   content: `${this.getBaseUrl}${this.$page.documentation.path}/`,
-        // },
-        // {
-        //   property: 'og:image',
-        //   content: `${this.getBaseUrl}/default-thumb.png`,
-        // },
-        // {
-        //   property: 'og:image:secure_url',
-        //   content: `${this.getBaseUrl}/default-thumb.png`,
-        // },
       ],
     }
   },
@@ -237,35 +192,6 @@ export default {
       },
     }
   },
-  created() {
-    this.$static.allContest.edges.forEach((c) => {
-      const { contest, year, round } = c.node
-      if (!this.dropdown[contest]) {
-        this.dropdown[contest] = {
-          isOpen: false,
-          years: {},
-        }
-      }
-      if (!this.dropdown[contest].years[year]) {
-        this.dropdown[contest].years[year] = {
-          isOpen: false,
-          rounds: {},
-        }
-      }
-      if (!this.dropdown[contest].years[year].rounds[round]) {
-        this.dropdown[contest].years[year].rounds[round] = {
-          isOpen: false,
-        }
-      }
-    })
-
-    // set all to open for this.$page.contest
-    const { contest, year, round } = this.$page.contest
-    this.dropdown[contest].isOpen = true
-    this.dropdown[contest].years[year].isOpen = true
-    this.dropdown[contest].years[year].rounds[round].isOpen = true
-    this.dropdown = { ...this.dropdown }
-  },
   methods: {
     toggleShowSolutions() {
       this.showSolutions = !this.showSolutions
@@ -278,6 +204,8 @@ export default {
   },
 }
 </script>
+
+
 
 
 
