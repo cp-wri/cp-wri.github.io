@@ -25,7 +25,10 @@
           <div v-show="showSolutions">
             <div v-if="page.contest.content.trim() === ''">
               <p class="text-l mb-7">
-                Belum ada solusi/pembahasan untuk soal ini :(
+                <img src="/images/no-solution.png" class="w-full mx-auto" />
+              <p class="text-gray-700 text-base text-2xl text-center">
+                Solusi tidak tersedia, yuk berkontribusi untuk membuat solusi soal ini!
+              </p>
               </p>
             </div>
             <div class="markdown-body mt-7" v-html="page.contest.content" key="contents"></div>
@@ -53,6 +56,20 @@ export default {
   },
 }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

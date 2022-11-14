@@ -11,91 +11,7 @@
           border-r-1 border-gray-300
           dark:border-gray-700
         " aria-label="left-sidebar">
-        <div class="w-full flex flex-col sticky top-5">
-          <div class="w-full flex flex-col my-4">
-            <p class="text-xl font-semibold pb-5">Kompetisi</p>
-
-            <ul>
-              <li v-for="(contest, contestidx)  in contests" :key="contestidx"
-                class="border-b border-solid last:border-none border-gray-300 pb-2 mt-2">
-                <div
-                  class="text-base text-gray-900 text-left bg-primary-100 dark:bg-primary-600 dark:text-white px-2 py-1 rounded-md w-full flex flex-row items-center justify-between mb-2 cursor-pointer"
-                  @click="toggleContest(contestidx)">
-                  <span class="font-semibold lowercase first-letter:capitalize py-1">{{
-                      contestidx
-                  }}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-auto" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd" />
-                  </svg>
-                </div>
-                <transition name="scroll-up" mode="out-in">
-                  <ul class="ml-1" v-if="isContestOpen(contestidx)" key="years">
-                    <li v-for="(year, yearidx)  in contest" :key="yearidx">
-                      <div
-                        class="text-base text-gray-800 dark:text-white bg-secondary-50 dark:bg-secondary-500 text-left bg-primary-200 px-2 py-1 rounded-md w-full flex flex-row items-center justify-between mb-2 cursor-pointer"
-                        @click="toggleYear(contestidx, yearidx)">
-                        <span class="font-semibold lowercase first-letter:capitalize py-1">{{
-                            yearidx
-                        }}</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-auto" viewBox="0 0 20 20"
-                          fill="currentColor">
-                          <path fill-rule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clip-rule="evenodd" />
-                        </svg>
-                      </div>
-                      <transition name="scroll-up" mode="out-in">
-                        <ul class="ml-1" v-if="isYearOpen(contestidx, yearidx)" key="rounds">
-                          <li v-for="(round, roundidx)  in year" :key="roundidx">
-                            <div
-                              class="text-base text-gray-800 dark:text-white bg-primary-100 dark:bg-primary-600 text-left bg-primary-200 px-2 py-1 rounded-md w-full flex flex-row items-center justify-between mb-2 cursor-pointer"
-                              @click="toggleRound(contestidx, yearidx, roundidx)">
-                              <span class="font-semibold lowercase first-letter:capitalize py-1">{{
-                                  roundidx
-                              }}</span>
-                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-auto" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                  clip-rule="evenodd" />
-                              </svg>
-                            </div>
-                            <transition name="scroll-up" mode="out-in">
-                              <ul class="ml-1" v-if="isRoundOpen(contestidx, yearidx, roundidx)" key="problems">
-                                <li v-for="(problem, problemidx)  in round" :key="problemidx">
-                                  <a :href="problem.node.path" class="text-gray-700 dark:text-gray-300">
-                                    <div
-                                      class="text-base dark:text-white bg-white dark:bg-primary-600 text-left border px-2 py-0.5 rounded-md w-full flex flex-row items-center justify-between mb-0.5"
-                                      :class="{ 'bg-secondary-400 dark:bg-tertiary-600 text-white': problem.node.path === $page.contest.path }">
-                                      <span class="font-semibold lowercase first-letter:capitalize py-1">
-                                        {{
-                                            problem.node.title
-                                        }}</span>
-                                      <!-- circle -->
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-auto"
-                                        viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                          d="M10 12a2 2 0 100-4 2 2 0 000 4zm0 2a4 4 0 100-8 4 4 0 000 8z"
-                                          clip-rule="evenodd" />
-                                      </svg>
-                                    </div>
-                                  </a>
-                                </li>
-                              </ul>
-                            </transition>
-                          </li>
-                        </ul>
-                      </transition>
-                    </li>
-                  </ul>
-                </transition>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <Sidebar :oppenedContest="$page.contest" />
       </aside>
 
       <section class="w-full md:w-4/7 flex flex-col px-2 md:px-10">
@@ -187,9 +103,6 @@ export default {
   data() {
     return {
       showSolutions: false,
-      //dropdown state for contest name, year, round
-      dropdown: {
-      },
     }
   },
   methods: {
@@ -204,10 +117,6 @@ export default {
   },
 }
 </script>
-
-
-
-
 
 <style src="~/css/main.css" />
 
