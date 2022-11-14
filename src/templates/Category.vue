@@ -6,23 +6,15 @@
         <div class="flex flex-wrap">
           <div class="w-full md:w-2/3 flex flex-col pr-0 md:pr-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div
-                v-for="post in $page.category.belongsTo.edges"
-                :key="post.node.id"
-              >
+              <div v-for="post in $page.category.belongsTo.edges" :key="post.node.id">
                 <post-card :post="post"></post-card>
               </div>
             </div>
-            <pagination-posts
-              class="mt-10"
-              v-if="$page.category.belongsTo.pageInfo.totalPages > 1"
-              :base="`/category/${$page.category.id}`"
-              :totalPages="$page.category.belongsTo.pageInfo.totalPages"
-              :currentPage="$page.category.belongsTo.pageInfo.currentPage"
-            />
+            <pagination-posts class="mt-10" v-if="$page.category.belongsTo.pageInfo.totalPages > 1"
+              :base="`/category/${$page.category.id}`" :totalPages="$page.category.belongsTo.pageInfo.totalPages"
+              :currentPage="$page.category.belongsTo.pageInfo.currentPage" />
           </div>
-          <aside
-            class="
+          <aside class="
               w-full
               md:w-1/3
               flex flex-col
@@ -32,8 +24,7 @@
               md:mt-0 md:pr-0 md:pl-6 md:border-l-1
               border-gray-300
               dark:border-gray-700
-            "
-          >
+            ">
             <app-sidebar sidebar="Categories" />
           </aside>
         </div>

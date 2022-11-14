@@ -21,7 +21,7 @@
                 <div
                   class="text-base text-gray-900 text-left bg-primary-100 dark:bg-primary-600 dark:text-white px-2 py-1 rounded-md w-full flex flex-row items-center justify-between mb-2 cursor-pointer"
                   @click="toggleContest(contestidx)">
-                  <span class="font-semibold lowercase first-letter:capitalize py-1">{{
+                  <span class="font-semibold uppercase py-1">{{
                       contestidx
                   }}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-auto" viewBox="0 0 20 20"
@@ -69,10 +69,11 @@
                                   <a :href="problem.node.path" class="text-gray-700 dark:text-gray-300">
                                     <div
                                       class="text-base dark:text-white bg-white dark:bg-primary-600 text-left border px-2 py-0.5 rounded-md w-full flex flex-row items-center justify-between mb-0.5"
-                                      :class="{ 'bg-secondary-400 dark:bg-tertiary-600 text-white': problem.node.path === $page.contest.path }">
+                                      :class="{
+                                      'bg-secondary-400 dark:bg-tertiary-600 text-white': problem.node.path === $page.contest.path }">
                                       <span class="font-semibold lowercase first-letter:capitalize py-1">
                                         {{
-                                            problem.node.title
+                                          problem.node.title
                                         }}</span>
                                       <!-- circle -->
                                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-auto"
@@ -191,7 +192,7 @@ export default {
         // },
         // {
         //   name: 'twitter:image',
-        //   content: `${this.getBaseUrl}/default-thumb.png`,
+        //   content: `${this.getBaseUrl}/default-thumb.jpg`,
         // },
         // {
         //   name: 'twitter:creator',
@@ -209,11 +210,11 @@ export default {
         // },
         // {
         //   property: 'og:image',
-        //   content: `${this.getBaseUrl}/default-thumb.png`,
+        //   content: `${this.getBaseUrl}/default-thumb.jpg`,
         // },
         // {
         //   property: 'og:image:secure_url',
-        //   content: `${this.getBaseUrl}/default-thumb.png`,
+        //   content: `${this.getBaseUrl}/default-thumb.jpg`,
         // },
       ],
     }
@@ -331,6 +332,12 @@ export default {
   }
 }
 </script>
+
+
+
+
+
+
 
 
 

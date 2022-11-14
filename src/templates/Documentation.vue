@@ -12,8 +12,7 @@
             </div>
           </div>
         </div>
-        <aside
-          class="
+        <aside class="
             w-full
             md:w-1/3
             flex flex-col
@@ -22,8 +21,7 @@
             md:pr-0 md:pl-6 md:border-l-1
             border-gray-300
             dark:border-gray-700
-          "
-        >
+          ">
           <app-sidebar />
         </aside>
       </div>
@@ -76,7 +74,7 @@ export default {
         },
         {
           name: 'twitter:image',
-          content: `${this.getBaseUrl}/default-thumb.png`,
+          content: `${this.getBaseUrl}/default-thumb.jpg`,
         },
         {
           name: 'twitter:creator',
@@ -94,11 +92,11 @@ export default {
         },
         {
           property: 'og:image',
-          content: `${this.getBaseUrl}/default-thumb.png`,
+          content: `${this.getBaseUrl}/default-thumb.jpg`,
         },
         {
           property: 'og:image:secure_url',
-          content: `${this.getBaseUrl}/default-thumb.png`,
+          content: `${this.getBaseUrl}/default-thumb.jpg`,
         },
       ],
     }
@@ -109,5 +107,7 @@ export default {
   },
 }
 </script>
+
+
 
 <style src="../css/github-markdown.css" />

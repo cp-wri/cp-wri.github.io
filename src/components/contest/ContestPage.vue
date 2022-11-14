@@ -9,14 +9,14 @@
 
         <div class="w-full">
           <transition name="fade" mode="out-in">
-            <div  key="pdf">
-              <div v-if="!showSolutions && (page.contest.pdf == null || page.contest.pdf.trim() == '')">
+            <div key="pdf">
+              <div v-if="(!showSolutions && (page.contest.pdf == null || page.contest.pdf.trim() == ''))">
                 <p class="text-gray-700 text-base">
                   Soal tidak tersedia...
                 </p>
               </div>
 
-              <iframe v-show="!showSolutions" :src="page.contest.pdf" width="100%" height="700px" frameborder="0"/>
+              <iframe v-show="!showSolutions" :src="page.contest.pdf" width="100%" height="700px" frameborder="0" />
             </div>
           </transition>
         </div>
@@ -28,7 +28,7 @@
                 Belum ada solusi/pembahasan untuk soal ini :(
               </p>
             </div>
-            <div  class="markdown-body mt-7" v-html="page.contest.content" key="contents"></div>
+            <div class="markdown-body mt-7" v-html="page.contest.content" key="contents"></div>
           </div>
         </transition>
       </div>
@@ -80,6 +80,8 @@ export default {
   }
 }
 </script>
+
+
 
 
 

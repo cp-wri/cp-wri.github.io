@@ -64,10 +64,8 @@ module.exports = {
       },
 
       transparent: 'transparent',
-
       black: '#000',
       white: '#fff',
-
       secondary: {
         50: '#eeeef7',
         100: '#cbcde7',
@@ -94,6 +92,19 @@ module.exports = {
         900: '#624404',
       },
 
+      tertiary: {
+        50: '#FEF2F2',
+        100: '#FEE2E2',
+        200: '#FECACA',
+        300: '#FCA5A5',
+        400: '#F87171',
+        500: '#EF4444',
+        600: '#DC2626',
+        700: '#B91C1C',
+        800: '#991B1B',
+        900: '#7F1D1D',
+      },
+
       gray: {
         50: '#F9FAFB',
         100: '#F3F4F6',
@@ -106,6 +117,7 @@ module.exports = {
         800: '#1F2937',
         900: '#111827',
       },
+
     },
     fontFamily: {
       sans: [

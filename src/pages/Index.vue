@@ -224,7 +224,7 @@ export default {
         },
         {
           name: 'twitter:image',
-          content: `${process.env.GRIDSOME_BASE_URL}/images/default-thumb.png`,
+          content: `${process.env.GRIDSOME_BASE_URL}/images/default-thumb.jpg`,
         },
         {
           name: 'twitter:creator',
@@ -242,11 +242,11 @@ export default {
         },
         {
           property: 'og:image',
-          content: `${process.env.GRIDSOME_BASE_URL}/images/default-thumb.png`,
+          content: `${process.env.GRIDSOME_BASE_URL}/images/default-thumb.jpg`,
         },
         {
           property: 'og:image:secure_url',
-          content: `${process.env.GRIDSOME_BASE_URL}/images/default-thumb.png`,
+          content: `${process.env.GRIDSOME_BASE_URL}/images/default-thumb.jpg`,
         },
       ],
     }

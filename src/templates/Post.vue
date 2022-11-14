@@ -1,8 +1,7 @@
 <template>
   <Layout>
     <div class="container px-5 py-8 mx-auto flex flex-wrap">
-      <aside
-        class="
+      <aside class="
           w-full
           md:w-1/7
           sm:w-0
@@ -12,25 +11,16 @@
           sm:block
           border-r-1 border-gray-300
           dark:border-gray-700
-        "
-        aria-label="left-sidebar"
-      >
+        " aria-label="left-sidebar">
         <div class="w-full flex flex-col sticky top-5">
           <table-of-content />
         </div>
       </aside>
       <section class="w-full md:w-4/7 flex flex-col px-2 md:px-10">
-        <g-image
-          class="mb-8"
-          v-if="$page.post.thumbnail"
-          :src="$page.post.thumbnail.src"
-        />
+        <g-image class="mb-8" v-if="$page.post.thumbnail" :src="$page.post.thumbnail.src" />
         <h1 class="text-4xl font-bold leading-tight">{{ $page.post.title }}</h1>
         <div class="text-xl text-gray-400 mt-2 mb-8">
-          <g-link
-            v-if="parentCategoryPath($page.post.categories)"
-            :to="parentCategoryPath($page.post.categories)"
-          >
+          <g-link v-if="parentCategoryPath($page.post.categories)" :to="parentCategoryPath($page.post.categories)">
             <span title="CATEGORY">
               {{ parentCategory($page.post.categories) }}
             </span>
@@ -40,10 +30,7 @@
           </span>
           -️ {{ $page.post.date }}
         </div>
-        <div
-          v-if="$page.post.is_archived"
-          class="border border-dashed mb-6 p-5 text-center border-secondary-500"
-        >
+        <div v-if="$page.post.is_archived" class="border border-dashed mb-6 p-5 text-center border-secondary-500">
           <div class="text-lg text-secondary-500">
             {{ $static.metadata.archive_title }}
           </div>
@@ -51,11 +38,7 @@
         </div>
         <div class="markdown-body mb-8" v-html="$page.post.content" />
         <div class="flex mb-8 text-sm">
-          <g-link
-            :to="tag.path"
-            v-for="tag in $page.post.tags"
-            :key="tag.id"
-            class="
+          <g-link :to="tag.path" v-for="tag in $page.post.tags" :key="tag.id" class="
               bg-transparent
               text-secondary-500
               hover:bg-secondary-500 hover:text-white
@@ -66,15 +49,12 @@
               hover:border-transparent
               rounded-full
               mr-4
-            "
-          >
+            ">
             {{ tag.title }}
           </g-link>
         </div>
         <div class="text-center mb-8">
-          <g-link
-            to="/blog"
-            class="
+          <g-link to="/blog" class="
               font-bold
               uppercase
               inline-flex
@@ -95,19 +75,11 @@
               focus:outline-none
               waves-effect
               mr-4
-            "
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 mr-1"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
+            ">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
                 d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
-                clip-rule="evenodd"
-              />
+                clip-rule="evenodd" />
             </svg>
             <span>Back to Blog</span>
           </g-link>
@@ -120,8 +92,7 @@
         <post-comment :title="$page.post.title" />
       </section>
 
-      <aside
-        class="
+      <aside class="
           w-full
           md:w-2/7
           flex flex-col
@@ -130,9 +101,7 @@
           md:pr-0 md:pl-6 md:border-l-1
           border-gray-300
           dark:border-gray-700
-        "
-        aria-label="right-sidebar"
-      >
+        " aria-label="right-sidebar">
         <app-sidebar :sidebar="$page.post.sidebar" />
       </aside>
     </div>
@@ -239,7 +208,7 @@ export default {
 
   computed: {
     getThumbnailImage() {
-      let thumbnailImage = `${this.getBaseUrl}/default-thumb.png`
+      let thumbnailImage = `${this.getBaseUrl}/default-thumb.jpg`
       const cover = this.$page.post.thumbnail
       if (cover != null) {
         thumbnailImage = `${this.getBaseUrl}${this.$page.post.thumbnail.src}`
@@ -252,5 +221,25 @@ export default {
   },
 }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style src="../css/github-markdown.css" />

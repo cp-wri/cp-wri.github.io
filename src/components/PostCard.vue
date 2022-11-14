@@ -14,7 +14,7 @@
       <g-image class="lg:h-48 md:h-36 w-full object-cover object-center" :src="
         post.node.thumbnail
           ? post.node.thumbnail.src
-          : '/images/default-thumb.png'
+          : '/images/default-thumb.jpg'
       " alt="post.node.title" />
     </g-link>
     <div class="p-6 h-full flex flex-col justify-between">
