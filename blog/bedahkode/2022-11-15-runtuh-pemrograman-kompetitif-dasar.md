@@ -48,7 +48,7 @@ Misal ada blok seperti ini
 0 0 1 0
 1 1 0 1
 1 1 1 1
-0 1 0 0
+0 1 0 1
 1 0 0 1
 ```
 Setelah kita hapus baris ke-3, akan menjadi seperti ini
@@ -57,7 +57,7 @@ Setelah kita hapus baris ke-3, akan menjadi seperti ini
 0 0 1 0
 1 1 0 1
 0 0 0 0
-0 1 0 0
+0 1 0 1
 1 0 0 1
 ```
 Jadi last *last standing blocks*nya adalah (X)
@@ -66,8 +66,8 @@ Jadi last *last standing blocks*nya adalah (X)
 0 0 1 0
 1 1 0 1
 0 0 0 0
-0 X 0 0
-X 0 0 X
+0 X 0 X
+X 0 0 1
     X
 ```
 Kita runtuhkan blok-blok diatasnya sampai ke *last standing blocks*.
@@ -75,9 +75,9 @@ Kita runtuhkan blok-blok diatasnya sampai ke *last standing blocks*.
 ```bash
 0 0 0 0
 0 0 0 0
-0 1 0 0
-1 X 0 1
-X 0 1 X
+0 1 0 1
+1 X 0 X
+X 0 1 1
     X
 ```
 Sehingga menjadi
@@ -85,7 +85,7 @@ Sehingga menjadi
 ```bash
 0 0 0 0
 0 0 0 0
-0 1 0 0
+0 1 0 1
 1 1 0 1
 1 0 1 1
 ```
