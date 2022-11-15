@@ -5,9 +5,9 @@ path: /bedah-kode-seleksi-olimpiade-tlx-toki
 date: 2022-11-15
 summary: Bedah Kode Soal Seleksi Olimpiade kategori Pemrograman Kompetitif Dasar TLX TOKI
 tags: ['tlxtoki', 'bedah-kode', 'pkd']
-categories: ['codesolve']
+categories: ['bedahkode']
 is_archived: false
-thumbnail: ./seleksi-olimpiade-tlx-toki.png
+thumbnail: ./covers/seleksi-olimpiade-tlx-toki.png
 author: Tio Irawan
 ---
 
