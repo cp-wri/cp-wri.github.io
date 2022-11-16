@@ -1,11 +1,11 @@
 ---
-title: Implementasi Depth First Search (DFS) dalam Menghitung Jumlah Pulau Menggunakan Java — Leetcode#200 Problems!
+title: Bedah Kode - Implementasi Depth First Search (DFS) dalam Menghitung Jumlah Pulau Menggunakan Java — Leetcode#200 Problems!
 cover_title: DFS dalam Menghitung Jumlah Pulau
 path: /dfs-implementation
 date: 2022-11-08
 summary: Kita akan mempelajari bagaimana cara mengimplementasikan Depth First Search (DFS) dalam menghitung jumlah pulau menggunakan Java.
-tags: ['leetcode', 'bfs', 'dfs', 'java']
-categories: ['leetcode']
+tags: ['leetcode', 'bfs', 'dfs', 'bedahkode']
+categories: ['bedahkode']
 thumbnail: ./dfs-implementation.png
 is_archived: false
 ---

@@ -6,7 +6,7 @@
           <img src="./../../static/images/hero-img.png" alt="hero" class="w-full md:w-[64rem]" />
         </div>
         <div id="hero-text" class="flex items-center justify-center flex-col flex-wrap md:items-start">
-          <h1 class="md:text-4xl md:text-left font-bold text-primary-500 dark:text-primary-400 text-center text-2xl">
+          <h1 class="md:text-4xl md:text-left font-bold text-primary-500 dark:text-secondary-200 text-center text-2xl">
             Competitive
             Programming -
             Workshop &
@@ -15,8 +15,26 @@
             Competitive Programming - Workshop & Riset Informatika atau CP-WRI merupakan sebuah wadah bagi mahasiswa/i
             Politeknik Negeri Malang untuk belajar dan berlatih dalam bidang pemrograman kompetitif.
           </p>
-          <div class="mt-8">
-            <button class="px-4 py-2 text-white bg-primary-500 rounded hover:bg-blue-600">Get Started</button>
+          <div class="mt-8 flex flex-row gap-2 justify-center items-center">
+            <a href="/blog/newcomers">
+              <button class="px-4 py-2 text-white bg-primary-500 dark:bg-secondary-400 rounded hover:bg-blue-600">Get
+                Started</button>
+            </a>
+            <div class="flex gap-2 justify-center items-center">
+              <svg version="1.1" class="w-8 fill-current text-primary-300 dark:text-secondary-200" id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 414.34 414.34" style="enable-background:new 0 0 414.34 414.34;" xml:space="preserve">
+                <path d="M6.076,162.616L183.835,58.601c3.795-2.222,8.485-2.241,12.304-0.057c3.815,2.187,6.17,6.246,6.174,10.644l0.036,46.966
+		c0.213,0.052,0.38,0.094,0.495,0.126c4.441,1.239,9.163,2.603,14.854,4.294c18.457,5.483,37.417,12.593,59.668,22.374
+		c19.31,8.487,38.2,19.442,56.149,32.559c12.826,9.373,24.895,20.182,35.867,32.126c29.857,32.497,46.216,75.647,44.881,118.391
+		c-0.233,7.489-1.076,14.674-1.869,20.716c-0.787,6.008-5.84,10.542-11.897,10.678c-0.093,0.002-0.187,0.003-0.277,0.003
+		c-5.939,0-11.048-4.263-12.086-10.14c-3.304-18.678-8.574-34.021-16.111-46.909c-9.42-16.104-22.223-29.625-37.021-39.103
+		c-12.718-8.145-26.153-14.396-41.075-19.113c-17.405-5.503-36.597-8.951-58.671-10.545c-8.906-0.643-18.502-0.967-30.2-1.02
+		c-0.354,0-1.112,0.007-2.098,0.019l-0.032,44.29c-0.004,4.372-2.332,8.413-6.113,10.608c-3.782,2.196-8.446,2.214-12.245,0.048
+		L6.196,183.879c-3.81-2.172-6.172-6.21-6.196-10.597C-0.025,168.897,2.291,164.832,6.076,162.616z" />
+              </svg>
+              <p class="text-gray-600 dark:text-white">Start from here!</p>
+            </div>
           </div>
           <div class="mt-8" id="buildby">
             <p class="text-gray-600 md:text-left text-center dark:text-white mb-4">Build by</p>
