@@ -147,6 +147,11 @@ export default {
       theme: '',
       isOpen: false,
       menuItems: [
+         {
+          key: 'aoc',
+          name: 'Advent of Code',
+          to: '/aoc/',
+        },
         {
           key: 'contests',
           name: 'Contests',
