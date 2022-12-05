@@ -550,12 +550,12 @@
 }
 
 .markdown-body table tr {
-    background-color: #fff;
+    /* background-color: #fff; */
     border-top: 1px solid #c6cbd1;
 }
 
 .markdown-body table tr:nth-child(2n) {
-    background-color: #f6f8fa;
+    background-color: #7c7c7c29;
 }
 
 .markdown-body img {
@@ -609,7 +609,7 @@
 
 .markdown-body .highlight pre,
 .markdown-body pre {
-    background-color: #f6f8fa;
+    background-color: #8080802f;
     border-radius: 3px;
     font-size: 0.8rem;
     line-height: 1.5;
