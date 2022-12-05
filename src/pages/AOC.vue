@@ -282,9 +282,8 @@ export default {
           }
           return b.global_score - a.global_score
         } else if (this.selectedOrdering === 'stars') {
-          // Ties are broken by the time the most recent star was acquired
           if (b.stars === a.stars) {
-            return b.last_star_ts - a.last_star_ts
+            return a.last_star_ts - b.last_star_ts
           }
           return b.stars - a.stars
         }
