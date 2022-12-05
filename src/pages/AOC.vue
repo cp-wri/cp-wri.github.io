@@ -44,18 +44,9 @@
 
       <section class="w-full md:w-4/7 flex flex-col px-2 md:px-10">
         <div class="w-full flex flex-col">
-          <div
-            class="
-              w-auto
-              justify-center
-              flex-col
-              items-center
-              block
-              markdown-body
-            "
-          >
+          <div class="w-auto justify-center flex-col items-center block">
             <div class="flex justify-between items-center">
-              <h2>
+              <p class="text-3xl font-semibold mb-4">
                 Leaderboard
 
                 <span class="text-gray-500 dark:text-gray-400 text-sm block">
@@ -65,7 +56,7 @@
                       : `Last updated: ${selectedLastUpdate.toLocaleString()}`
                   }}
                 </span>
-              </h2>
+              </p>
 
               <!-- select ordering: Local Score, Global Score, Stars -->
               <select
@@ -86,59 +77,61 @@
               </select>
             </div>
 
-            <table class="leaderboard-table">
-              <thead>
-                <tr>
-                  <th class="text-left">Rank</th>
-                  <th class="text-left">Username</th>
-                  <th class="text-left">Local Score</th>
-                  <th class="text-left">Global Score</th>
-                  <th class="text-left">Stars</th>
-                  <th v-for="day in 25" :key="day" class="text-left">
-                    {{ day }}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(member, index) in sortedMembers" :key="member.id">
-                  <td>{{ index + 1 }}</td>
-                  <td :class="{ 'font-bold text-red': member.name === null }">
-                    {{ member.name || '!!Anonymous!!' }}
-                  </td>
-                  <td>{{ member.local_score }}</td>
-                  <td>{{ member.global_score }}</td>
-                  <td>{{ member.stars }}</td>
-                  <td v-for="day in 25" :key="day">
-                    <span v-if="member.completion_day_level[day]">
-                      <span v-if="member.completion_day_level[day][1]">
-                        <span v-if="member.completion_day_level[day][2]">
-                          <!-- gold -->
-                          <span style="color: #ffd700">★</span>
+            <div class="markdown-body">
+              <table class="leaderboard-table">
+                <thead>
+                  <tr>
+                    <th class="text-left">Rank</th>
+                    <th class="text-left">Username</th>
+                    <th class="text-left">Local Score</th>
+                    <th class="text-left">Global Score</th>
+                    <th class="text-left">Stars</th>
+                    <th v-for="day in 25" :key="day" class="text-left">
+                      {{ day }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(member, index) in sortedMembers" :key="member.id">
+                    <td>{{ index + 1 }}</td>
+                    <td :class="{ 'font-bold text-red': member.name === null }">
+                      {{ member.name || '!!Anonymous!!' }}
+                    </td>
+                    <td>{{ member.local_score }}</td>
+                    <td>{{ member.global_score }}</td>
+                    <td>{{ member.stars }}</td>
+                    <td v-for="day in 25" :key="day">
+                      <span v-if="member.completion_day_level[day]">
+                        <span v-if="member.completion_day_level[day][1]">
+                          <span v-if="member.completion_day_level[day][2]">
+                            <!-- gold -->
+                            <span style="color: #ffd700">★</span>
+                          </span>
+                          <span v-else>
+                            <!-- silver -->
+                            <span style="color: #c0c0c0">★</span>
+                          </span>
                         </span>
                         <span v-else>
-                          <!-- silver -->
-                          <span style="color: #c0c0c0">★</span>
+                          <span class="text-red">0</span>
                         </span>
                       </span>
-                      <span v-else>
-                        <span class="text-red">0</span>
-                      </span>
-                    </span>
-                  </td>
-                </tr>
+                    </td>
+                  </tr>
 
-                <tr v-if="isLoading">
-                  <td colspan="28" class="text-center">
-                    <span class="text-gray-500">Loading...</span>
-                  </td>
-                </tr>
-                <tr v-else-if="members.length === 0">
-                  <td colspan="28" class="text-center">
-                    <span class="text-gray-500">Data kosong</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                  <tr v-if="isLoading">
+                    <td colspan="28" class="text-center">
+                      <span class="text-gray-500">Loading...</span>
+                    </td>
+                  </tr>
+                  <tr v-else-if="members.length === 0">
+                    <td colspan="28" class="text-center">
+                      <span class="text-gray-500">Data kosong</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
@@ -156,7 +149,7 @@
         "
         aria-label="right-sidebar"
       >
-        <div class="w-full my-4">
+        <div class="w-full">
           <p class="text-xl font-semibold mb-4">Event Detail</p>
           <div class="markdown-body">
             <table class="table-borderless">
