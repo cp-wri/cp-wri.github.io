@@ -31,7 +31,7 @@
                 pb-2
               "
               :class="{
-                'text-primary-600 dark:text-primary-200':
+                'text-primary-600 dark:text-primary-600':
                   selectedEvent.id === event.id &&
                   selectedEvent.year === event.year,
               }"
@@ -45,7 +45,7 @@
         </ul>
       </aside>
 
-      <section class="w-full md:w-5/7 flex flex-col px-2 md:px-10">
+      <section class="w-full md:w-4/7 flex flex-col px-2 md:px-10">
         <div class="w-full flex flex-col">
           <div
             class="
@@ -77,7 +77,7 @@
                   <td>{{ member.local_score }}</td>
                   <td>
                     <!-- <g-link :to="`/aoc/2022/leaderboard/${member.id}`"> -->
-                      {{ member.name }}
+                    {{ member.name }}
                     <!-- </g-link> -->
                   </td>
                   <td>{{ member.stars }}</td>
@@ -115,6 +115,44 @@
           </div>
         </div>
       </section>
+
+      <aside
+        class="
+          w-full
+          md:w-2/7
+          flex flex-col
+          pl-2
+          pr-2
+          md:pr-0 md:pl-6 md:border-l-1
+          border-gray-300
+          dark:border-gray-700
+        "
+        aria-label="right-sidebar"
+      >
+        <div class="w-full my-4">
+          <p class="text-xl font-semibold mb-4">Event Detail</p>
+          <div class="markdown-body">
+            <table class="table-borderless">
+              <tbody>
+                <tr>
+                  <th class="text-left">Event Name</th>
+                  <td class="text-left">{{ selectedEvent.name }}</td>
+                </tr>
+                <tr>
+                  <th class="text-left">Year</th>
+                  <td class="text-left">{{ selectedEvent.year }}</td>
+                </tr>
+                <tr>
+                  <th class="text-left">Join Code</th>
+                  <td class="text-left">
+                    <pre>{{ selectedEvent.joinCode }}</pre>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </aside>
     </div>
   </Layout>
 </template>
@@ -156,6 +194,7 @@ export default {
           name: 'Advent of Code 2022',
           id: '2238062',
           year: '2022',
+          joinCode: '2238062-3ba1a0bb',
         },
 
         // when adding new data, dont forget to update cron fetcher to
@@ -171,6 +210,7 @@ export default {
         name: 'Advent of Code 2022',
         id: '2238062',
         year: '2022',
+        joinCode: '2238062-3ba1a0bb',
       },
       members: [],
       isLoading: false,
@@ -191,7 +231,7 @@ export default {
         this.members = Object.values(data.data.members)
       } catch (error) {
         // if (error.response != null && error.response.status === 404) {
-          this.members = []
+        this.members = []
         // }
       } finally {
         this.isLoading = false
@@ -207,9 +247,18 @@ export default {
 <style src="~/css/main.css"></style>
 <style src="~/css/github-markdown.css"></style>
 
-<style>
+<style scoped>
 .content-container {
   min-height: 100vh;
+}
+
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+    border: none;
 }
 </style>
 
