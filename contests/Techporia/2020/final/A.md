@@ -1,7 +1,7 @@
 ---
 contest: Techporia
 year: 2020
-round: Qualification
+round: Final
 problem: A
 title: Problem A
 pdf: contests/Techporia/2020/final/A - Problem A.pdf
