@@ -39,9 +39,6 @@
               {{ event.name }}
             </a>
           </li>
-          <!-- <li>
-            <g-link to="/aoc/2022/ntah">ntah</g-link>
-            </li> -->
         </ul>
       </aside>
 
@@ -57,14 +54,45 @@
               markdown-body
             "
           >
-            <h2>Leaderboard</h2>
+            <div class="flex justify-between items-center">
+              <h2>
+                Leaderboard
 
-            <table>
+                <span class="text-gray-500 dark:text-gray-400 text-sm block">
+                  {{
+                    selectedLastUpdate === null
+                      ? '-'
+                      : `Last updated: ${selectedLastUpdate.toLocaleString()}`
+                  }}
+                </span>
+              </h2>
+
+              <!-- select ordering: Local Score, Global Score, Stars -->
+              <select
+                v-model="selectedOrdering"
+                class="
+                  border border-gray-300
+                  dark:border-gray-700
+                  rounded-md
+                  px-2
+                  py-1
+                  text-gray-600
+                  dark:text-gray-400
+                "
+              >
+                <option value="local">Local Score</option>
+                <option value="global">Global Score</option>
+                <option value="stars">Stars</option>
+              </select>
+            </div>
+
+            <table class="leaderboard-table">
               <thead>
                 <tr>
                   <th class="text-left">Rank</th>
-                  <th class="text-left">Score</th>
                   <th class="text-left">Username</th>
+                  <th class="text-left">Local Score</th>
+                  <th class="text-left">Global Score</th>
                   <th class="text-left">Stars</th>
                   <th v-for="day in 25" :key="day" class="text-left">
                     {{ day }}
@@ -72,14 +100,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(member, index) in members" :key="member.id">
+                <tr v-for="(member, index) in sortedMembers" :key="member.id">
                   <td>{{ index + 1 }}</td>
-                  <td>{{ member.local_score }}</td>
-                  <td>
-                    <!-- <g-link :to="`/aoc/2022/leaderboard/${member.id}`"> -->
-                    {{ member.name }}
-                    <!-- </g-link> -->
+                  <td :class="{ 'font-bold text-red': member.name === null }">
+                    {{ member.name || '!!Anonymous!!' }}
                   </td>
+                  <td>{{ member.local_score }}</td>
+                  <td>{{ member.global_score }}</td>
                   <td>{{ member.stars }}</td>
                   <td v-for="day in 25" :key="day">
                     <span v-if="member.completion_day_level[day]">
@@ -212,8 +239,10 @@ export default {
         year: '2022',
         joinCode: '2238062-3ba1a0bb',
       },
+      selectedLastUpdate: null,
       members: [],
       isLoading: false,
+      selectedOrdering: 'local',
     }
   },
   methods: {
@@ -229,6 +258,7 @@ export default {
         const response = await fetch(endpoint)
         const data = await response.json()
         this.members = Object.values(data.data.members)
+        this.selectedLastUpdate = new Date(data.updated)
       } catch (error) {
         // if (error.response != null && error.response.status === 404) {
         this.members = []
@@ -240,6 +270,26 @@ export default {
   },
   async mounted() {
     await this.fetchMembers()
+  },
+  computed: {
+    sortedMembers() {
+      return this.members.sort((a, b) => {
+        if (this.selectedOrdering === 'local') {
+          return b.local_score - a.local_score
+        } else if (this.selectedOrdering === 'global') {
+          if (b.global_score === a.global_score) {
+            return b.local_score - a.local_score
+          }
+          return b.global_score - a.global_score
+        } else if (this.selectedOrdering === 'stars') {
+          // Ties are broken by the time the most recent star was acquired
+          if (b.stars === a.stars) {
+            return b.last_star_ts - a.last_star_ts
+          }
+          return b.stars - a.stars
+        }
+      })
+    },
   },
 }
 </script>
@@ -258,7 +308,15 @@ export default {
 .table-borderless > tfoot > tr > th,
 .table-borderless > thead > tr > td,
 .table-borderless > thead > tr > th {
-    border: none;
+  border: none;
+}
+
+.leaderboard-table {
+  margin-top: 0 !important;
+}
+
+.text-red {
+  color: #e3342f;
 }
 </style>
 
