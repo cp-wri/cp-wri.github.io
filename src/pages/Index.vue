@@ -151,6 +151,8 @@
           </g-link>
         </div>
       </section>
+
+      <event-banner></event-banner>
     </main>
   </Layout>
 </template>
@@ -272,6 +274,7 @@ export default {
 
   components: {
     PostCard: () => import('~/components/PostCard'),
+    EventBanner: () => import('~/components/banners/EventBanner'),
   },
 }
 </script>
