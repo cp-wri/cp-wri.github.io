@@ -2,8 +2,7 @@
 <template>
   <Layout>
     <div class="content-container container px-5 py-8 mx-auto flex flex-wrap">
-      <aside
-        class="
+      <aside class="
           w-full
           md:w-1/7
           sm:w-0
@@ -12,16 +11,12 @@
           sm:block
           border-r-1 border-gray-300
           dark:border-gray-700
-        "
-        aria-label="left-sidebar"
-      >
+        " aria-label="left-sidebar">
         <p class="text-xl font-semibold pb-5">Events</p>
 
         <ul>
           <li v-for="event in events" :key="`${event.year}/${event.id}`">
-            <a
-              @click.prevent="setSelectedEvent(event)"
-              class="
+            <a @click.prevent="setSelectedEvent(event)" class="
                 text-gray-600
                 dark:text-gray-400
                 hover:text-primary-600
@@ -29,13 +24,11 @@
                 cursor-pointer
                 block
                 pb-2
-              "
-              :class="{
+              " :class="{
                 'text-primary-600 dark:text-primary-600':
                   selectedEvent.id === event.id &&
                   selectedEvent.year === event.year,
-              }"
-            >
+              }">
               {{ event.name }}
             </a>
           </li>
@@ -51,17 +44,15 @@
 
                 <span class="text-gray-500 dark:text-gray-400 text-sm block">
                   {{
-                    selectedLastUpdate === null
-                      ? '-'
-                      : `Last updated: ${selectedLastUpdate.toLocaleString()}`
+                      selectedLastUpdate === null
+                        ? '-'
+                        : `Last updated: ${selectedLastUpdate.toLocaleString()}`
                   }}
                 </span>
               </p>
 
               <!-- select ordering: Local Score, Global Score, Stars -->
-              <select
-                v-model="selectedOrdering"
-                class="
+              <select v-model="selectedOrdering" class="
                   border border-gray-300
                   dark:border-gray-700
                   rounded-md
@@ -69,8 +60,7 @@
                   py-1
                   text-gray-600
                   dark:text-gray-400
-                "
-              >
+                ">
                 <option value="local">Local Score</option>
                 <option value="global">Global Score</option>
                 <option value="stars">Stars</option>
@@ -136,8 +126,7 @@
         </div>
       </section>
 
-      <aside
-        class="
+      <aside class="
           w-full
           md:w-2/7
           flex flex-col
@@ -146,9 +135,7 @@
           md:pr-0 md:pl-6 md:border-l-1
           border-gray-300
           dark:border-gray-700
-        "
-        aria-label="right-sidebar"
-      >
+        " aria-label="right-sidebar">
         <div class="w-full">
           <p class="text-xl font-semibold mb-4">Event Detail</p>
           <div class="markdown-body">
@@ -216,15 +203,6 @@ export default {
           year: '2022',
           joinCode: '2238062-3ba1a0bb',
         },
-
-        // when adding new data, dont forget to update cron fetcher to
-        // https://aoc-leaderboard-fetcher.onrender.com/{year}/{id}/fetch
-        // at least every 15 minutes
-        // {
-        //   name: 'Advent of Code 2021',
-        //   id: '2238062',
-        //   year: '2021',
-        // },
       ],
       selectedEvent: {
         name: 'Advent of Code 2022',
@@ -286,20 +264,24 @@ export default {
 }
 </script>
 
-<style src="~/css/main.css"></style>
-<style src="~/css/github-markdown.css"></style>
+<style src="~/css/main.css">
+
+</style>
+<style src="~/css/github-markdown.css">
+
+</style>
 
 <style scoped>
 .content-container {
   min-height: 100vh;
 }
 
-.table-borderless > tbody > tr > td,
-.table-borderless > tbody > tr > th,
-.table-borderless > tfoot > tr > td,
-.table-borderless > tfoot > tr > th,
-.table-borderless > thead > tr > td,
-.table-borderless > thead > tr > th {
+.table-borderless>tbody>tr>td,
+.table-borderless>tbody>tr>th,
+.table-borderless>tfoot>tr>td,
+.table-borderless>tfoot>tr>th,
+.table-borderless>thead>tr>td,
+.table-borderless>thead>tr>th {
   border: none;
 }
 

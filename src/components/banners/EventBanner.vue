@@ -2,8 +2,7 @@
   <div>
     <banner-modal v-if="showModal" @close="showModal = false">
       <template #over>
-        <button
-          class="
+        <button class="
             bg-white
             flex
             justify-center
@@ -19,22 +18,9 @@
             p-2
             hover:text-tertiary-600
             dark:hover:text-tertiary-600
-          "
-          @click.stop="showModal = false"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
+          " @click.stop="showModal = false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </template>
@@ -42,48 +28,26 @@
       <template #body>
         <div class="banner-body">
           <div class="banner-image-display">
-            <g-link
-              v-if="bannerShown.action"
-              :to="bannerShown.action"
-              class="banner-image-display-link"
-            >
-              <img
-                :src="bannerShown.img"
-                :key="bannerShown.img"
-                @mouseenter="isHovering = true"
-                @mouseleave="isHovering = false"
-              />
+            <g-link v-if="bannerShown.action" :to="bannerShown.action" class="banner-image-display-link">
+              <img :src="bannerShown.img" :key="bannerShown.img" @mouseenter="isHovering = true"
+                @mouseleave="isHovering = false" />
             </g-link>
-            <img
-              v-else
-              :src="bannerShown.img"
-              :key="bannerShown.img"
-              @click.stop
-              @mouseenter="isHovering = true"
-              @mouseleave="isHovering = false"
-            />
+            <img v-else :src="bannerShown.img" :key="bannerShown.img" @click.stop @mouseenter="isHovering = true"
+              @mouseleave="isHovering = false" />
           </div>
           <div class="banner-image-selector">
-            <div
-              v-for="(banner, idx) in banners"
-              :key="banner.img"
-              class="banner-image-selector-item"
-              @click.stop="indexShown = idx"
-            >
-              <img
-                :src="banner.img"
-                :class="{
-                  'banner-image-selector-item-active': indexShown === idx,
-                }"
-              />
+            <div v-for="(banner, idx) in banners" :key="banner.img" class="banner-image-selector-item"
+              @click.stop="indexShown = idx">
+              <img :src="banner.img" :class="{
+                'banner-image-selector-item-active': indexShown === idx,
+              }" />
             </div>
           </div>
         </div>
       </template>
     </banner-modal>
 
-    <div v-show="banners.length > 0 && !showModal"
-      class="
+    <div v-show="banners.length > 0 && !showModal" class="
         absolute
         -right-6
         top-45
@@ -95,9 +59,7 @@
         px-4
         rounded-t
         cursor-pointer
-      "
-      @click="showModal = true"
-    >
+      " @click="showModal = true">
       event {{ banners.length > 1 ? 's' : '' }}
     </div>
   </div>
@@ -116,8 +78,8 @@ export default {
       isHovering: false,
       banners: [
         {
-          img: 'images/banner/events/aoc2022.png',
-          action: '/aoc',
+          img: 'images/banner/events/aoc2022.webp',
+          action: '/blog/aoc2022/',
         },
       ],
       indexShown: 0,
@@ -245,7 +207,12 @@ export default {
 .fade-leave-active {
   transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+
+.fade-enter,
+.fade-leave-to
+
+/* .fade-leave-active in <2.1.8 */
+  {
   opacity: 0;
 }
 </style>
