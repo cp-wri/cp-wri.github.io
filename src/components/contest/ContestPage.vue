@@ -10,13 +10,22 @@
         <div class="w-full">
           <transition name="fade" mode="out-in">
             <div key="pdf">
-              <div v-if="(!showSolutions && (page.contest.pdf == null || page.contest.pdf.trim() == ''))">
-                <p class="text-gray-700 text-base">
-                  Soal tidak tersedia...
-                </p>
+              <div
+                v-if="
+                  !showSolutions &&
+                  (page.contest.pdf == null || page.contest.pdf.trim() == '')
+                "
+              >
+                <p class="text-gray-700 text-base">Soal tidak tersedia...</p>
               </div>
 
-              <iframe v-show="!showSolutions" :src="page.contest.pdf" width="100%" height="700px" frameborder="0" />
+              <iframe
+                v-show="!showSolutions"
+                :src="page.contest.pdf"
+                width="100%"
+                height="700px"
+                frameborder="0"
+              />
             </div>
           </transition>
         </div>
@@ -26,12 +35,18 @@
             <div v-if="page.contest.content.trim() === ''">
               <p class="text-l mb-7">
                 <img src="/images/no-solution.png" class="w-full mx-auto" />
-              <p class="text-gray-700 text-base text-2xl text-center">
-                Solusi tidak tersedia, yuk berkontribusi untuk membuat solusi soal ini!
               </p>
+
+              <p class="text-gray-700 text-base text-2xl text-center">
+                Solusi tidak tersedia, yuk berkontribusi untuk membuat solusi
+                soal ini!
               </p>
             </div>
-            <div class="markdown-body mt-7" v-html="page.contest.content" key="contents"></div>
+            <div
+              class="markdown-body mt-7"
+              v-html="page.contest.content"
+              key="contents"
+            ></div>
           </div>
         </transition>
       </div>
@@ -47,11 +62,11 @@ export default {
   props: {
     page: {
       type: Object,
-      required: true
+      required: true,
     },
     showSolutions: {
       type: Boolean,
-      default: null
+      default: null,
     },
   },
 }
@@ -75,19 +90,18 @@ export default {
 
 
 
-<style src="../../css/github-markdown.css" />
+<style src="../../css/github-markdown.css" ></style>
 
-<style>
+<style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity .3s
+  transition: opacity 0.3s;
 }
 
 .fade-enter,
 .fade-leave-to
 
-/* .fade-leave-active in <2.1.8 */
-  {
-  opacity: 0
+/* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
 }
 </style>
