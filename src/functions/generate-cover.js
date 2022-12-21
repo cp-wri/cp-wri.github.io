@@ -7,30 +7,30 @@ module.exports = async function(
   { imgHeight, imgWidth, colours }
 ) {
 
-  console.log("Picking a main colour")
+  
   let mainColour = randomColour()
   if (colours !== undefined && colours.constructor === Array) {
     mainColour = colours.random()
   }
-  console.log("Main Colour: " + mainColour)
-  console.log("Generating gradient")
+  
+  
   const firstColour = tinycolor(mainColour).darken(25).toString()
   const firstColourRGB = tinycolor(firstColour).toRgbString()
   const secondColour = tinycolor(mainColour).spin(50).toString()
   const secondColourRGB = tinycolor(secondColour).toRgbString()
-  console.log("First Colour: " + firstColour + ", Second Colour: " + secondColour)
+  
   const angle = Math.floor(Math.random() * 180)
   const gradient = `linear-gradient(-${angle}deg, ${firstColourRGB}, ${secondColourRGB})`
-  console.log("Gradient: " + gradient)
-  console.log("Generating title colours")
+  
+  
   const titleBG = tinycolor(mainColour).setAlpha(0.6).toHexString()
   const titleText = "#fff"
   const titleStroke = (tinycolor(mainColour).isLight() ? "-webkit-text-stroke: 0.5px black;" : "-webkit-text-stroke: 0.5px white;")
 
-  console.log("Calculating font size for title")
+  
 
   const titleFontSize = getFontSize(coverTitle)
-  console.log("Font Size: " + titleFontSize)
+  
 
   const template = `
     <html>
@@ -212,7 +212,7 @@ module.exports = async function(
       </body>
     </html>
   `
-  console.log("Creating image " + output)
+  
   createImage({
     output,
     html: template,

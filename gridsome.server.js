@@ -67,7 +67,7 @@ module.exports = function (api) {
     if (process.env.AUTO_GENERATE_COVER) {
       // Loop through each type to create a cover image for
       coverOptions.types.forEach(function (type) {
-        console.log("Generating cover images for " + type.name)
+        
         const collection = actions.getCollection(type.typeName)
         const outputPath = `${type.path}`
         fs.ensureDirSync(outputPath)
@@ -77,10 +77,10 @@ module.exports = function (api) {
               const output = `${node.thumbnail}`
               fs.access(output, (error) => {
                 if (error) {
-                  console.log(`Creating ${output}`)
+                  
                   generateCover(output, node.cover_title ?? node.title, coverOptions)
                 } else {
-                  console.log(`${output} already exists`)
+                  
                 }
               })
             }
@@ -88,7 +88,7 @@ module.exports = function (api) {
         })
       })
     } else {
-      console.log("If you would like to automatically generate cover images, set AUTO_GENERATE_COVER in your env file to true.")
+      
     }
   })
 }
