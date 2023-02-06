@@ -431,25 +431,30 @@ export default {
   data() {
     return {
       showSolutions: false,
-      apiKey: getApiKey() == defaultApiKey ? '' : getApiKey(),
+      // will be initiated during mounted (akses awal ke localStorage wajib lewat mounted biar bisa dibuild)
+      // https://github.com/gridsome/gridsome/issues/191
+      apiKey: '',
+      selectedLanguage: '',
+      compilerOptions: '',
+      code: '',
+      // end of initiated during mounted
       isSubmitting: false,
       hasTestCases: false,
       isProcessingTestCases: false,
       isCheckingForAvailableTestCases: false,
       fileName: '',
       language: 'cpp',
-      code: '',
       testCases: [],
       languages: languages,
-      selectedLanguage: getSelectedLanguage(),
-      compilerOptions: getCompilerOptions(getSelectedLanguage().id),
       commandLineArguments: '',
       submissionsToken: [],
       submissionsResult: [],
     }
   },
-
   mounted() {
+    this.apiKey = getApiKey() == defaultApiKey ? '' : getApiKey()
+    this.selectedLanguage = getSelectedLanguage()
+    this.compilerOptions = getCompilerOptions(getSelectedLanguage().id)
     this.checkForAvailableTestCase()
   },
   methods: {
