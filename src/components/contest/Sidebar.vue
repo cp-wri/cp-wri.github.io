@@ -37,13 +37,11 @@
                   )}; filter: saturate(160%)`
                 : ''
             "
-
             @click="toggleContest(contestidx)"
           >
-            <span
-              class="font-semibold first-letter:capitalize py-1"
-              >{{ contestidx }}</span
-            >
+            <span class="font-semibold first-letter:capitalize py-1">{{
+              contestidx
+            }}</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5 ml-auto"
@@ -179,7 +177,6 @@
                               <div
                                 class="
                                   text-base
-                                  bg-white
                                   dark:bg-gray-800 dark:text-white
                                   text-left
                                   border

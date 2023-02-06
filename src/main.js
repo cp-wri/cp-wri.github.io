@@ -7,6 +7,9 @@ import GlobalMixin from '~/mixins/GlobalMixin'
 import Fuse from 'fuse.js'
 // import GithubV4 from '@vssue/api-github-v4'
 import VueDisqus from 'vue-disqus'
+import VueSweetalert2 from 'vue-sweetalert2'
+
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 export default function (Vue, { router, head, isClient }) {
   // Set default layout as a global component
@@ -22,6 +25,7 @@ export default function (Vue, { router, head, isClient }) {
   }
 
   Vue.use(VueDisqus)
+  Vue.use(VueSweetalert2)
 
   // Vue.use(Vssue, {
   //   api: GithubV4,
