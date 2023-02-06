@@ -77,17 +77,20 @@ export default {
       showModal: false,
       isHovering: false,
       banners: [
-        {
-          img: 'images/banner/events/aoc2022.webp',
-          action: '/blog/aoc2022/',
-        },
+          // {
+          //   img: 'images/banner/events/aoc2022.webp',
+          //   action: '/blog/aoc2022/',
+          //   visible: false,
+          // },
       ],
       indexShown: 0,
     }
   },
   mounted() {
+    if(banners.length <= 0) return;
+    
     // set show modal if eventBannerModalClosedTime is not set
-    if (!localStorage.getItem('eventBannerModalClosedTime')) {
+    if ( !localStorage.getItem('eventBannerModalClosedTime')) {
       this.showModal = true
     } else {
       // set show modal if eventBannerModalClosedTime is set but expired
@@ -109,6 +112,7 @@ export default {
   },
   computed: {
     bannerShown() {
+      if (this.banners.length === 0) return {};
       return this.banners[this.indexShown]
     },
   },
