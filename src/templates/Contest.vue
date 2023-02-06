@@ -100,7 +100,7 @@
             </div>
           </div>
 
-          <div v-show="hasTestCases">
+          <div v-show="!isCheckingForAvailableTestCases && hasTestCases">
             <p class="text-xl font-semibold mb-5">Test Solusimu</p>
 
             <!-- form file input, the code will be read from the file, no need to set action -->
