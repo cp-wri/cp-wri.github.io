@@ -87,7 +87,7 @@ export default {
     }
   },
   mounted() {
-    if(banners.length <= 0) return;
+    if(this.banners.length <= 0) return;
     
     // set show modal if eventBannerModalClosedTime is not set
     if ( !localStorage.getItem('eventBannerModalClosedTime')) {
