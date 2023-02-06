@@ -1,0 +1,6 @@
+[
+    {
+        "input": "5 2\nAA\nAB\nBB\nBA\nAZ",
+        "output": "5 2 1 3 4"
+    }
+]
